@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="220dip"
+  android:focusable="true"
+  style="@style/WidgetBackground">
+	<TextView android:id="@+id/textViewWidgetTitle"
+		android:textColor="@android:color/black" 
+		android:text="@string/widgetTitle"
+		android:layout_height="wrap_content"
+		android:layout_width="fill_parent" 
+		android:layout_marginTop="10dip"
+		android:gravity="center">
+	</TextView>
+	<Button android:id="@+id/buttonWidgetRight" 
+		android:text=">"
+		android:enabled="false"
+		android:layout_height="150dip"
+		android:layout_below="@id/textViewWidgetTitle"
+		android:layout_alignParentRight="true" 
+		android:layout_width="wrap_content">
+  	</Button>
+	<Button android:id="@+id/buttonWidgetLeft" 
+		android:text="&#60;" 
+		android:enabled="false"
+		android:layout_height="wrap_content" 
+		android:layout_width="wrap_content"
+		android:layout_below="@id/textViewWidgetTitle"
+		android:layout_alignTop="@id/buttonWidgetRight"
+		android:layout_alignParentLeft="true"
+		android:layout_alignBottom="@+id/buttonWidgetRight">
+	</Button>
+	<TextView android:id="@+id/textViewWidgetNoteTitle" 
+		android:layout_height="wrap_content" 
+		android:layout_width="fill_parent"
+		android:layout_alignTop="@id/buttonWidgetRight"
+		android:layout_toLeftOf="@id/buttonWidgetRight"
+		android:layout_alignLeft="@+id/textViewWidgetNoteContent"
+		android:textColor="@android:color/black"
+		android:text="Title" >
+	</TextView>
+	<TextView android:id="@+id/textViewWidgetNoteContent" 
+		android:clickable="true"
+		android:enabled="false"
+		android:layout_height="wrap_content" 
+		android:layout_width="fill_parent"
+		android:layout_below="@id/textViewWidgetNoteTitle"
+		android:layout_toLeftOf="@id/buttonWidgetRight"
+		android:layout_toRightOf="@id/buttonWidgetLeft"
+		android:layout_alignBottom="@+id/buttonWidgetRight"
+		android:paddingTop="2dip"
+		android:textColor="@android:color/black"
+		android:text="content">
+	</TextView>  	
+	<Button android:id="@+id/buttonWidgetNewNote"
+		android:text="@string/widgetAddNote" 
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" 
+		android:layout_below="@id/buttonWidgetRight"
+		android:layout_alignParentBottom="true">
+	</Button>
+</RelativeLayout>

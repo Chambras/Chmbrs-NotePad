@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+	<item 
+    	android:id="@+id/contextItemOpenNote" 
+    	android:title="@string/contextMenuOpenNote"
+    />
+	<item 
+    	android:id="@+id/contextItemDeleteNote" 
+    	android:title="@string/contentextMenuDeleteNote"
+    />
+    <item 
+    	android:id="@+id/contextItemShareNote" 
+    	android:title="@string/contentextMenuShareNote"
+    />
+    <item
+    	android:id="@+id/contextItemPinNote"
+    	android:title="@string/contentMenupinNoteHomeScreen"
+    />
+    <item
+    	android:id="@+id/contextItemSendToCalendar"
+    	android:title="@string/contentMenuSendToCalendar"
+    />
+    <item 
+    	android:id="@+id/contextItemOpenAppNote" 
+    	android:title="@string/contentMenuOpenAppNote"
+    	android:enabled="false"
+    />
+    <item 
+    	android:id="@+id/contextItemExportToTextFile" 
+    	android:title="@string/contentmenuExportNote"
+    />
+</menu>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+	<item 
+    	android:id="@+id/itemEditNoteTitle" 
+    	android:title="@string/menuEditNoteTitle" 
+    	android:icon="@android:drawable/ic_menu_edit" android:orderInCategory="1" />
+    <item 
+    	android:id="@+id/itemDeleteNote" 
+    	android:title="@string/menuEditDeleteNote" 
+    	android:icon="@android:drawable/ic_menu_delete" android:orderInCategory="1" />
+    <item 
+    	android:id="@+id/itemShareNote" 
+    	android:title="@string/menuEditShareNote" 
+    	android:icon="@android:drawable/ic_menu_share" android:orderInCategory="1" />
+    <item 
+    	android:id="@+id/itemDiscardNoteChanges" 
+    	android:title="@string/menuEditDicardNotesChanges" 
+    	android:icon="@android:drawable/ic_menu_revert" android:orderInCategory="1" />
+    <item 
+    	android:id="@+id/itemOpenApp" 
+    	android:title="@string/menuEditOpenAppNote" 
+    	android:enabled="false"
+    	android:icon="@android:drawable/ic_menu_set_as" android:orderInCategory="1" />
+    <item 
+    	android:id="@+id/itemSetReminder" 
+    	android:title="@string/menuEditReminderNote" 
+    	android:icon="@android:drawable/ic_popup_reminder" android:orderInCategory="1" />
+</menu>

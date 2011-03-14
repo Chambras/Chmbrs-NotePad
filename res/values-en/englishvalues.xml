@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="noNotes">No notes in this account.</string>
+	
+<!--	home menu items-->
+	<string name="addNoteMenu">Add Note</string>
+	<string name="searchMenu">Search</string>
+	<string name="categoriesMenu">Categories</string>
+	<string name="settingsMenu">Settings</string>
+	
+<!--	new note menu items-->
+	<string name="menuNewDiscardNote">Discard Note</string>
+	
+<!--	edit note menu items-->
+	<string name="menuEditNoteTitle">Edit Title</string>
+	<string name="menuEditDeleteNote">Delete Note</string>
+	<string name="menuEditShareNote">Share Note</string>
+	<string name="menuEditDicardNotesChanges">Discard Changes</string>
+	<string name="menuEditOpenAppNote">Open App</string>
+	<string name="menuEditReminderNote">Set Reminder</string>
+	
+
+<!--activity titles-->
+	<string name="createNewNoteTitle">Create New Note</string>	
+	<string name="editNoteTitle">Edit Note</string>
+	<string name="searchResultsTitle">Results for:</string>
+	<string name="notePadPreferencesTitle">Chmbrs Note Pad Preferences</string>
+	<string name="notePadReminderTitle">Set Reminder Type</string>
+	<string name="notePadCalendarTitle">Send Note to Calendar</string>
+
+
+<!--	title activity-->
+	<string name="updateTitle">Update Title:</string>
+	<string name="updateTitleButton">Save</string>
+	
+<!--	context menu items-->
+	<string name="contextMenuOpenNote">Open Note</string>
+	<string name="contentextMenuDeleteNote">Delete Note</string>
+	<string name="contentextMenuShareNote">Share</string>
+	<string name="contentMenuOpenAppNote">Open Related App</string>
+	<string name="contentMenupinNoteHomeScreen">PIN note in home Screen</string>
+	<string name="contentMenuSendToCalendar">Send to Calendar</string>
+	<string name="contentmenuExportNote">Export Note to Text File</string>
+	
+<!--	Toast notifications-->
+	<string name="noteSaved">The note has been saved.</string>
+	
+<!--	search-->
+	<string name="searchNotesHint">Search Notes</string>
+	<string name="searchSettingsDescription">Titles and Text in your Notes</string>
+
+<!--live folders-->
+	<string name="liveFolderLabel">Note Pad</string>
+	<string name="defaultLiveFolderName">All My Notes</string>
+	
+<!--	widget-->
+	<string name="widgetTitle">All My Notes</string>
+	<string name="widgetAddNote">Create New Note</string>
+	
+<!--	notifications-->
+	<string name="notificationTitle">Note Pad Reminder</string>
+	<string name="notificationConfirmation">Reminder set to:</string>
+
+<!--	reminders menu-->
+	<string name="reminderMenuMinutes">Minutes</string>
+	<string name="reminderMenuHours">Hours</string>
+	<string name="reminderMenuDays">Days</string>
+	<string name="reminderOK">OK</string>
+	<string name="reminderCancel">Cancel</string>
+	
+<!--preferences screen-->
+	<string name="prefCatEditorSettings">Editor Settings</string>
+		<string name="prefCatTextSize">Text Size</string>
+		<string name="prefCatTextSizeSummary">Select the text size</string>
+		<string-array name="prefCatTextSizes">
+			<item>Large</item>
+			<item>Medium</item>
+			<item>Small</item>
+		</string-array>
+		<string name="prefCatGuideLines">Guide Lines</string>
+		<string name="prefCatGuideLinesSummary">Display Horizontal Help Lines</string>
+		<string name="prefCatFontType">Font Type</string>
+		<string name="prefCatFontTypeSummary">Select the text font type</string>
+		<string-array name="prefCatFontTypes">
+			<item>Font 1</item>
+			<item>Font 2</item>
+			<item>Font 3</item>
+		</string-array>
+		<string name="prefCatAutoLink">Auto Link</string>
+		<string name="prefCatAutoLinkSummary">Will Automatically link phones, addresses and web links</string>
+	
+	<string name="prefCatNotifications">Notifications</string>
+		<string name="prefCatRingTone">RingTone</string>
+		<string name="prefCatRingToneSummary">Select the reminder ringtone</string>
+		<string name="prefCatLEDColor">LED Color</string>
+		<string name="prefCatLEDColorSummary">Select the Reminders LED Color</string>
+		<string-array name ="prefCatLEDColors">
+			<item>Green</item>
+			<item>Yellow</item>
+			<item>Blue</item>
+		</string-array>
+		<string name="prefCatVibrate">Vibrate</string>
+		<string name="prefCatVibrateSummary">Reminders will vibrate</string>
+		
+	<string name="prefCatTools">Tools</string>
+		<string name="prefCatExportNotes">Export Notes</string>
+		<string name="prefCatExportNotesSummary">Will Export all Notes to SD Card</string>
+		<string name="prefCatTitleSize">Title Size</string>
+		<string name="prefCatTitleSizeSummary">Default Title Size</string>
+		<string name="prefCatSorType">Sort Type</string>
+		<string name="prefCatSorTypeSummary">Select Sort Type</string>
+		<string-array name="prefCatSortTypes">
+			<item>Date Created</item>
+			<item>Date Updated</item>
+			<item>Title</item>
+		</string-array>
+		<string name="prefCatTheme">Theme</string>
+		<string name="prefCatThemeSummary">Select Editor Theme</string>
+		<string-array name="prefCatThemeTypes">
+			<item>Light</item>
+			<item>Dark</item>
+			<item>Black and White</item>
+		</string-array>
+		
+	<string name="prefCatAbout">About Me</string>
+		<string name="prefCatAboutMe">About Me</string>
+		<string name="prefCatAboutMeSummary">Software Version and some Details</string>
+		<string name="prefCatChangeLog">Change Log</string>
+		<string name="prefCatChangeLogSummary">History Changes</string>
+		<string name="prefCatSendFeedBack">Send FeedBack</string>
+		<string name="prefCatSendFeedBackSummary">Send comments, new ideas, report bugs and issues</string>
+	
+</resources>

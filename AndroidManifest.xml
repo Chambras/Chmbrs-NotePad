@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.chmbrs.apps.notepad"
+      android:versionCode="1"
+      android:versionName="1.0">
+    <uses-sdk android:minSdkVersion="8" />
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT"/>
+	<uses-permission android:name="android.permission.VIBRATE"/>
+	<uses-permission android:name="android.permission.FLASHLIGHT"/>
+	<uses-permission android:name="android.permission.WRITE_CALENDAR"/>
+	<uses-permission android:name="android.permission.READ_CALENDAR"/>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> 
+
+    <application android:icon="@drawable/icon" android:label="@string/app_name" android:debuggable="true">
+    	<provider android:name="NotePadProvider"
+            android:authorities="com.chmbrs.apps.notepad"
+        />
+        <activity android:name="NoteList"
+                  android:label="@string/app_name">
+<!-- singletop it is better for performance but back behavior gets broken since it is only one activity instance. Need to research more-->
+<!--                  android:launchMode="singleTop "-->
+                  
+			<intent-filter>
+            	<action android:name="android.intent.action.SEARCH" />
+        	</intent-filter>
+        	<meta-data android:name="android.app.searchable" android:resource="@xml/searchable"/>
+                   
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+                <action android:name="android.intent.action.PICK" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.dir/vnd.chmbrs.note" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.chmbrs.note" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="NotePadEditor"
+                  android:label="@string/editNoteTitle" 
+                  android:theme="@android:style/Theme.Light"
+                  android:screenOrientation="sensor"
+                  android:configChanges="keyboardHidden|orientation">
+                  
+        	<intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <action android:name="android.intent.action.EDIT" />
+				<action android:name="com.chmbrs.apps.notepad.notes.action.EDIT_NOTE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.chmbrs.note" />
+        	</intent-filter>
+        	
+        	<intent-filter>
+                <action android:name="android.intent.action.INSERT" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.dir/vnd.chmbrs.note" />
+            </intent-filter>
+            
+        </activity>
+        
+        <activity android:name="NotePadTitleEditor"
+        		  android:label="@string/updateTitle"
+        		  android:theme="@android:style/Theme.Dialog"
+        		  android:windowSoftInputMode="stateVisible">
+        	<intent-filter>
+                <action android:name="com.chmbrs.apps.notepad.notes.action.EDIT_TITLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="vnd.android.cursor.item/vnd.chmbrs.note" />
+            </intent-filter>
+        </activity>
+        
+        <activity android:name="NotePadLiveFolder"
+        		  android:label="@string/liveFolderLabel">
+			<intent-filter>
+				<action android:name="android.intent.action.CREATE_LIVE_FOLDER"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+			</intent-filter>
+        </activity>
+        
+        <activity android:name="NotePadPreferences" android:label="@string/notePadPreferencesTitle" />
+        
+        <activity android:name="NotePadReminder" 
+        	android:label="@string/notePadReminderTitle" 
+        	android:icon="@android:drawable/ic_popup_reminder"
+        	android:theme="@android:style/Theme.Dialog"
+        	android:windowSoftInputMode="stateVisible">
+        	<intent-filter>
+				<action android:name="com.chmbrs.apps.notepad.notes.action.NOTE_SET_REMINDER"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+				<data android:mimeType="vnd.android.cursor.item/vnd.chmbrs.note" />
+			</intent-filter>
+        </activity>
+        
+        <activity android:name="NotePadCalendar"
+        	android:label="@string/notePadCalendarTitle"
+        	android:icon="@android:drawable/ic_menu_my_calendar"
+        	android:theme="@android:style/Theme.Dialog"
+        	android:windowSoftInputMode="stateVisible">
+        	<intent-filter>
+				<action android:name="com.chmbrs.apps.notepad.notes.action.NOTE_SEND_TO_CALENDAR"/>
+				<category android:name="android.intent.category.DEFAULT"/>
+				<data android:mimeType="vnd.android.cursor.item/vnd.chmbrs.note" />
+			</intent-filter>
+        </activity>>
+        	
+        <!-- Service to perform web API queries -->
+		<service android:name="NotePadWidgetProvider$NotePadUpdateService">
+			<intent-filter>
+        		<action android:name="com.chmbrs.apps.notepad.notes.action.REFRESH_NOTES" />
+        		<action android:name="com.chmbrs.apps.notepad.notes.action.MOVE_NEXT_NOTE" />
+        		<action android:name="com.chmbrs.apps.notepad.notes.action.MOVE_PREV_NOTE" />
+        		<category android:name="android.intent.category.DEFAULT"/>
+        	</intent-filter>
+		</service>
+        
+        <receiver android:name="NotePadWidgetProvider" android:label="@string/app_name">
+        	<intent-filter>
+        		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+        	</intent-filter>
+        	<meta-data android:name="android.appwidget.provider"  android:resource="@xml/notepadwidgetinfo"/>
+        </receiver>
+        
+        <receiver android:name="NotePadAlarm">
+        	<intent-filter>
+        		<action android:name="com.chmbrs.apps.notepad.notes.action.NOTE_REMINDER" />
+        		<data android:mimeType="vnd.android.cursor.item/vnd.chmbrs.note" />
+        	</intent-filter>
+        </receiver>
+    </application>
+</manifest>

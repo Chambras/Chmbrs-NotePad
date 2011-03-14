@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item 
+    	android:id="@+id/itemAddNote" 
+    	android:title="@string/addNoteMenu" 
+    	android:icon="@android:drawable/ic_input_add"
+    />
+    <item 
+    	android:id="@+id/itemSearch" 
+    	android:title="@string/searchMenu" 
+    	android:icon="@android:drawable/ic_menu_search"
+    />
+    <item 
+    	android:id="@+id/itemCategories" 
+    	android:title="@string/categoriesMenu" 
+    	android:icon="@android:drawable/ic_menu_agenda"
+    	android:enabled="false"
+    />
+    <item 
+    	android:id="@+id/itemSettings" 
+    	android:title="@string/settingsMenu" 
+    	android:icon="@android:drawable/ic_menu_preferences"
+    />
+</menu>

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent" 
+	android:layout_height="match_parent"
+	android:orientation="vertical">
+	
+	<RadioGroup android:id="@+id/radioGroup1"
+		android:layout_width="match_parent" 
+		android:layout_height="wrap_content">
+		
+		<LinearLayout android:id="@+id/linearLayoutMinutes"
+			android:layout_width="fill_parent" 
+			android:orientation="vertical"
+			android:layout_height="wrap_content" 
+			android:paddingBottom="10dip" 
+			android:paddingLeft="10dip" 
+			android:paddingRight="10dip">
+			
+			<TextView android:id="@+id/textViewTitleMinutes" 
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent" 
+				android:text="@string/reminderMenuMinutes"
+				android:gravity="left|center_vertical"
+			/>
+			<RelativeLayout android:id="@+id/relativeLayoutMinutes" 
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent" 
+				android:orientation="horizontal" 
+				android:paddingTop="3dip">
+				
+				<EditText android:id="@+id/editTextMinutes"
+					android:layout_height="wrap_content" 
+					android:text="1" 
+					android:lines="1" 
+					android:inputType="number" 
+					android:layout_width="100dip"
+				android:gravity="center"/>
+				<Button android:id="@+id/buttonMinusMinute"
+					android:layout_height="wrap_content" 
+					android:text="-" 
+					android:layout_width="40dip"
+					android:layout_toRightOf="@id/editTextMinutes"
+				/>
+				<Button android:id="@+id/buttonPlusMinute"
+					android:layout_height="wrap_content" 
+					android:text="+" 
+					android:layout_toRightOf="@id/buttonMinusMinute" 
+					android:layout_width="40dip"/>
+				<RadioButton android:id="@+id/radioButtonMinutes" 
+					android:layout_height="wrap_content"
+					android:checked="true"
+					android:layout_toRightOf="@id/buttonPlusMinute" 
+					android:layout_width="wrap_content" 
+					android:layout_marginLeft="60dip"/>
+			</RelativeLayout>
+		</LinearLayout>
+		
+		<LinearLayout android:id="@+id/linearLayoutHours"
+			android:layout_width="fill_parent" 
+			android:orientation="vertical"
+			android:layout_height="wrap_content" 
+			android:paddingBottom="10dip" 
+			android:paddingLeft="10dip" 
+			android:paddingRight="10dip">
+			
+			<TextView android:id="@+id/textViewTitleHours" 
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent" 
+				android:text="@string/reminderMenuHours"
+				android:gravity="left|center_vertical"
+			/>
+			<RelativeLayout android:id="@+id/relativeLayoutHours" 
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent" 
+				android:orientation="horizontal" 
+				android:paddingTop="3dip">
+				
+				<EditText android:id="@+id/editTextHours"
+					android:layout_height="wrap_content" 
+					android:text="1" 
+					android:lines="1" 
+					android:inputType="number" 
+					android:layout_width="100dip"
+				android:gravity="center"/>
+				<Button android:id="@+id/buttonMinusHour"
+					android:layout_height="wrap_content" 
+					android:text="-" 
+					android:layout_width="40dip"
+					android:layout_toRightOf="@id/editTextHours"
+				/>
+				<Button android:id="@+id/buttonPlusHour"
+					android:layout_height="wrap_content" 
+					android:text="+" 
+					android:layout_toRightOf="@id/buttonMinusHour" 
+					android:layout_width="40dip"/>
+				<RadioButton android:id="@+id/radioButtonHours" 
+					android:layout_height="wrap_content"
+					android:checked="false"
+					android:layout_toRightOf="@id/buttonPlusHour" 
+					android:layout_width="wrap_content" 
+					android:layout_marginLeft="60dip"/>
+			</RelativeLayout>
+		</LinearLayout>
+		
+		<LinearLayout android:id="@+id/linearLayoutDays"
+			android:layout_width="fill_parent" 
+			android:orientation="vertical"
+			android:layout_height="wrap_content" 
+			android:paddingBottom="10dip" 
+			android:paddingLeft="10dip" 
+			android:paddingRight="10dip">
+			
+			<TextView android:id="@+id/textViewTitleDays" 
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent" 
+				android:text="@string/reminderMenuDays"
+				android:gravity="left|center_vertical"
+			/>
+			<RelativeLayout android:id="@+id/relativeLayoutDays" 
+				android:layout_height="wrap_content"
+				android:layout_width="match_parent" 
+				android:orientation="horizontal" 
+				android:paddingTop="3dip">
+				
+				<EditText android:id="@+id/editTextDays"
+					android:layout_height="wrap_content" 
+					android:text="1" 
+					android:lines="1" 
+					android:inputType="number" 
+					android:layout_width="100dip"
+				android:gravity="center"/>
+				<Button android:id="@+id/buttonMinusDay"
+					android:layout_height="wrap_content" 
+					android:text="-" 
+					android:layout_width="40dip"
+					android:layout_toRightOf="@id/editTextDays"
+				/>
+				<Button android:id="@+id/buttonPlusDay"
+					android:layout_height="wrap_content" 
+					android:text="+" 
+					android:layout_toRightOf="@id/buttonMinusDay" 
+					android:layout_width="40dip"/>
+				<RadioButton android:id="@+id/radioButtonDays" 
+					android:layout_height="wrap_content"
+					android:checked="false"
+					android:layout_toRightOf="@id/buttonPlusDay" 
+					android:layout_width="wrap_content" 
+					android:layout_marginLeft="60dip"/>
+			</RelativeLayout>
+		</LinearLayout>
+
+	</RadioGroup>
+	<LinearLayout android:id="@+id/layout"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" 
+		android:orientation="horizontal"
+		android:gravity="center|center_vertical" 
+		android:paddingTop="10dip"
+		android:paddingBottom="10dip">
+
+		<Button android:id="@+id/reminderOK" 
+			android:layout_height="wrap_content"
+			android:layout_width="100dp" 
+			android:text="@string/reminderOK" 
+		/>
+		<Button android:id="@+id/reminderCancel" 
+			android:layout_height="wrap_content"
+			android:layout_width="100dp" 
+			android:text="@string/reminderCancel" 
+		/>
+	</LinearLayout>
+</LinearLayout>

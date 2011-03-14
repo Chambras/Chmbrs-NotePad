@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="@string/prefCatEditorSettings">
+        <ListPreference  android:title="@string/prefCatTextSize"
+        	android:summary="@string/prefCatTextSizeSummary"
+        	android:entries="@array/prefCatTextSizes"
+        	android:entryValues="@array/prefCatTextSizes"
+        	android:defaultValue="Large"
+        />
+        <CheckBoxPreference android:title="@string/prefCatGuideLines"
+        	android:summary="@string/prefCatGuideLinesSummary"
+        />
+        <ListPreference android:title="@string/prefCatFontType"
+        	android:summary="@string/prefCatFontTypeSummary"
+        	android:entries="@array/prefCatFontTypes"
+        	android:entryValues="@array/prefCatFontTypes"
+        	android:defaultValue="Font 1"
+        />
+        <CheckBoxPreference android:title="@string/prefCatAutoLink"
+        	android:summary="@string/prefCatAutoLinkSummary"
+        />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/prefCatNotifications">
+        <RingtonePreference  
+        	android:title="@string/prefCatRingTone"
+        	android:summary="@string/prefCatRingToneSummary" 
+        />
+        <ListPreference android:title="@string/prefCatLEDColor"
+        	android:summary="@string/prefCatLEDColorSummary"
+        	android:entries="@array/prefCatLEDColors"
+        	android:entryValues="@array/prefCatLEDColors"
+        	android:defaultValue="Green"
+        />
+        <CheckBoxPreference android:title="@string/prefCatVibrate"
+        	android:summary="@string/prefCatVibrateSummary" 
+        />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/prefCatTools">
+        <Preference android:title="@string/prefCatExportNotes"
+        	android:summary="@string/prefCatExportNotesSummary"
+        />
+        <EditTextPreference android:title="@string/prefCatTitleSize"
+        	android:summary="@string/prefCatTitleSizeSummary"
+        	android:defaultValue="15"
+        />
+        <ListPreference android:title="@string/prefCatSorType"
+        	android:summary="@string/prefCatSorTypeSummary"
+        	android:entries="@array/prefCatSortTypes" 
+        	android:entryValues="@array/prefCatSortTypes" 
+        	android:defaultValue="Date Updated"
+        />
+        <ListPreference android:title="@string/prefCatTheme"
+        	android:summary="@string/prefCatThemeSummary"
+        	android:entries="@array/prefCatThemeTypes"
+        	android:entryValues="@array/prefCatThemeTypes"
+        	android:defaultValue="Light"
+        />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/prefCatAbout">
+        <Preference android:title="@string/prefCatAboutMe"
+        	android:summary="@string/prefCatAboutMeSummary" 
+        />
+        <Preference android:title="@string/prefCatChangeLog"
+        	android:summary="@string/prefCatChangeLogSummary"
+        />
+        <Preference android:title="@string/prefCatSendFeedBack"
+        	android:summary="@string/prefCatSendFeedBackSummary"
+        />
+    </PreferenceCategory>
+</PreferenceScreen>
