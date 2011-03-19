@@ -213,5 +213,6 @@ public final class R {
         public static final int notepadpreferences=0x7f040000;
         public static final int notepadwidgetinfo=0x7f040001;
         public static final int searchable=0x7f040002;
+        public static final int syncadapter=0x7f040003;
     }
 }

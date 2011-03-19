@@ -7,8 +7,11 @@ import java.io.IOException;
 
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.ListActivity;
 import android.app.SearchManager;
+import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Intent;
 import android.database.ContentObserver;
@@ -48,6 +51,8 @@ public class NoteList extends ListActivity
     private ContentObserver noteObserver;
     
     private GoogleAnalyticsTracker tracker;
+    
+    protected AccountManager  accountManager;
     
     //private static final String SEND_TO_CALENDAR = "com.chmbrs.apps.notepad.notes.action.NOTE_SEND_TO_CALENDAR";
     
@@ -102,6 +107,9 @@ public class NoteList extends ListActivity
 	        setListAdapter(adapter);
 	        Log.i(TAG, "loading notes.... " + cursor.getCount());
 		}
+		/*accountManager = AccountManager.get(this);
+        Account[] accounts = accountManager.getAccountsByType("com.google");
+		//ContentResolver.setIsSyncable(accounts[0], "com.chmbrs.apps.notepad", 1);*/
 	}
 
 	private void showResults(String query) 
