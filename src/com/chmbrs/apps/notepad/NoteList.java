@@ -248,7 +248,7 @@ public class NoteList extends ListActivity
 				noteDirectory.mkdir(); 
 			} 
 
-			File file = new File(noteDirectory.getPath()+"/"+title); 
+			File file = new File(noteDirectory.getPath()+"/"+title + ".txt"); 
 			if (!file.exists() && noteDirectory.exists())
 			{ 
 				try 
@@ -272,6 +272,7 @@ public class NoteList extends ListActivity
 			{ 
 				Log.e(TAG, "Failed to write the file to SDCard"); 
 			} 
+			Toast.makeText(this, R.string.noteExported, Toast.LENGTH_SHORT).show();
 		}
 		else
 		{

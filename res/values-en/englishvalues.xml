@@ -44,6 +44,7 @@
 	
 <!--	Toast notifications-->
 	<string name="noteSaved">The note has been saved.</string>
+	<string name="noteExported">The note has been exported.</string>
 	
 <!--	search-->
 	<string name="searchNotesHint">Search Notes</string>

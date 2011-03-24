@@ -108,7 +108,7 @@ public final class R {
         /** 	home menu items
          */
         public static final int addNoteMenu=0x7f060001;
-        public static final int app_name=0x7f060049;
+        public static final int app_name=0x7f06004a;
         public static final int categoriesMenu=0x7f060003;
         public static final int contentMenuOpenAppNote=0x7f060017;
         public static final int contentMenuSendToCalendar=0x7f060019;
@@ -122,11 +122,11 @@ public final class R {
         /** activity titles
          */
         public static final int createNewNoteTitle=0x7f06000c;
-        public static final int defaultLiveFolderName=0x7f06001f;
+        public static final int defaultLiveFolderName=0x7f060020;
         public static final int editNoteTitle=0x7f06000d;
         /** live folders
          */
-        public static final int liveFolderLabel=0x7f06001e;
+        public static final int liveFolderLabel=0x7f06001f;
         public static final int menuEditDeleteNote=0x7f060007;
         public static final int menuEditDicardNotesChanges=0x7f060009;
         /** 	edit note menu items
@@ -139,72 +139,73 @@ public final class R {
          */
         public static final int menuNewDiscardNote=0x7f060005;
         public static final int noNotes=0x7f060000;
+        public static final int noteExported=0x7f06001c;
         public static final int notePadCalendarTitle=0x7f060011;
         public static final int notePadPreferencesTitle=0x7f06000f;
         public static final int notePadReminderTitle=0x7f060010;
         /** 	Toast notifications
          */
         public static final int noteSaved=0x7f06001b;
-        public static final int notificationConfirmation=0x7f060023;
+        public static final int notificationConfirmation=0x7f060024;
         /** 	notifications
          */
-        public static final int notificationTitle=0x7f060022;
-        public static final int prefCatAbout=0x7f060042;
-        public static final int prefCatAboutMe=0x7f060043;
-        public static final int prefCatAboutMeSummary=0x7f060044;
-        public static final int prefCatAutoLink=0x7f060030;
-        public static final int prefCatAutoLinkSummary=0x7f060031;
-        public static final int prefCatChangeLog=0x7f060045;
-        public static final int prefCatChangeLogSummary=0x7f060046;
+        public static final int notificationTitle=0x7f060023;
+        public static final int prefCatAbout=0x7f060043;
+        public static final int prefCatAboutMe=0x7f060044;
+        public static final int prefCatAboutMeSummary=0x7f060045;
+        public static final int prefCatAutoLink=0x7f060031;
+        public static final int prefCatAutoLinkSummary=0x7f060032;
+        public static final int prefCatChangeLog=0x7f060046;
+        public static final int prefCatChangeLogSummary=0x7f060047;
         /** preferences screen
          */
-        public static final int prefCatEditorSettings=0x7f060029;
-        public static final int prefCatExportNotes=0x7f06003a;
-        public static final int prefCatExportNotesSummary=0x7f06003b;
-        public static final int prefCatFontType=0x7f06002e;
-        public static final int prefCatFontTypeSummary=0x7f06002f;
-        public static final int prefCatGuideLines=0x7f06002c;
-        public static final int prefCatGuideLinesSummary=0x7f06002d;
-        public static final int prefCatLEDColor=0x7f060035;
-        public static final int prefCatLEDColorSummary=0x7f060036;
-        public static final int prefCatNotifications=0x7f060032;
-        public static final int prefCatRingTone=0x7f060033;
-        public static final int prefCatRingToneSummary=0x7f060034;
-        public static final int prefCatSendFeedBack=0x7f060047;
-        public static final int prefCatSendFeedBackSummary=0x7f060048;
-        public static final int prefCatSorType=0x7f06003e;
-        public static final int prefCatSorTypeSummary=0x7f06003f;
-        public static final int prefCatTextSize=0x7f06002a;
-        public static final int prefCatTextSizeSummary=0x7f06002b;
-        public static final int prefCatTheme=0x7f060040;
-        public static final int prefCatThemeSummary=0x7f060041;
-        public static final int prefCatTitleSize=0x7f06003c;
-        public static final int prefCatTitleSizeSummary=0x7f06003d;
-        public static final int prefCatTools=0x7f060039;
-        public static final int prefCatVibrate=0x7f060037;
-        public static final int prefCatVibrateSummary=0x7f060038;
-        public static final int reminderCancel=0x7f060028;
-        public static final int reminderMenuDays=0x7f060026;
-        public static final int reminderMenuHours=0x7f060025;
+        public static final int prefCatEditorSettings=0x7f06002a;
+        public static final int prefCatExportNotes=0x7f06003b;
+        public static final int prefCatExportNotesSummary=0x7f06003c;
+        public static final int prefCatFontType=0x7f06002f;
+        public static final int prefCatFontTypeSummary=0x7f060030;
+        public static final int prefCatGuideLines=0x7f06002d;
+        public static final int prefCatGuideLinesSummary=0x7f06002e;
+        public static final int prefCatLEDColor=0x7f060036;
+        public static final int prefCatLEDColorSummary=0x7f060037;
+        public static final int prefCatNotifications=0x7f060033;
+        public static final int prefCatRingTone=0x7f060034;
+        public static final int prefCatRingToneSummary=0x7f060035;
+        public static final int prefCatSendFeedBack=0x7f060048;
+        public static final int prefCatSendFeedBackSummary=0x7f060049;
+        public static final int prefCatSorType=0x7f06003f;
+        public static final int prefCatSorTypeSummary=0x7f060040;
+        public static final int prefCatTextSize=0x7f06002b;
+        public static final int prefCatTextSizeSummary=0x7f06002c;
+        public static final int prefCatTheme=0x7f060041;
+        public static final int prefCatThemeSummary=0x7f060042;
+        public static final int prefCatTitleSize=0x7f06003d;
+        public static final int prefCatTitleSizeSummary=0x7f06003e;
+        public static final int prefCatTools=0x7f06003a;
+        public static final int prefCatVibrate=0x7f060038;
+        public static final int prefCatVibrateSummary=0x7f060039;
+        public static final int reminderCancel=0x7f060029;
+        public static final int reminderMenuDays=0x7f060027;
+        public static final int reminderMenuHours=0x7f060026;
         /** 	reminders menu
          */
-        public static final int reminderMenuMinutes=0x7f060024;
-        public static final int reminderOK=0x7f060027;
+        public static final int reminderMenuMinutes=0x7f060025;
+        public static final int reminderOK=0x7f060028;
         public static final int searchMenu=0x7f060002;
         /** 	search
          */
-        public static final int searchNotesHint=0x7f06001c;
+        public static final int searchNotesHint=0x7f06001d;
         public static final int searchResultsTitle=0x7f06000e;
-        public static final int searchSettingsDescription=0x7f06001d;
+        public static final int searchSettingsDescription=0x7f06001e;
         public static final int settingsMenu=0x7f060004;
         /** 	title activity
          */
         public static final int updateTitle=0x7f060012;
         public static final int updateTitleButton=0x7f060013;
-        public static final int widgetAddNote=0x7f060021;
+        public static final int widgetAddNote=0x7f060022;
         /** 	widget
          */
-        public static final int widgetTitle=0x7f060020;
+        public static final int widgetTitle=0x7f060021;
     }
     public static final class style {
         public static final int WidgetBackground=0x7f080000;
