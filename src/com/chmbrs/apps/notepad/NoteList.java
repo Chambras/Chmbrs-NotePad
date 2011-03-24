@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
@@ -54,8 +56,7 @@ public class NoteList extends ListActivity
     
     protected AccountManager  accountManager;
     
-    //private static final String SEND_TO_CALENDAR = "com.chmbrs.apps.notepad.notes.action.NOTE_SEND_TO_CALENDAR";
-    
+    private static final String exportFolderName = "chmbrs_exported_notes";
 	
     /** Called when the activity is first created. */
     @Override
@@ -180,7 +181,6 @@ public class NoteList extends ListActivity
 				setupShortCut(info.id, noteTitle.getText().toString());
 				break;
 			case R.id.contextItemSendToCalendar:
-				//startActivity(new Intent(SEND_TO_CALENDAR, noteUri));
 				sendToCalendar(noteTitle.getText().toString(), noteContent.getText().toString());
 				break;
 			case R.id.contextItemOpenAppNote:
@@ -188,10 +188,11 @@ public class NoteList extends ListActivity
 				break;
 			case R.id.contextItemExportToTextFile:
 				Log.i(TAG, "exportando nota");
-			try {
+			try 
+			{
 				exportNoteToSDCard(noteTitle.getText().toString(), noteContent.getText().toString());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
+			} catch (IOException e) 
+			{
 				e.printStackTrace();
 			}
 				break;
@@ -233,17 +234,28 @@ public class NoteList extends ListActivity
 	{
 		if(checkExternalMedia())
 		{
-			File directory = new File (Environment.getExternalStorageDirectory().getPath()+"/downloads"); 
+			String dateFolder = new SimpleDateFormat("dd-MM-yyyy").format(new Date()); //"25-03-2011";
+			File directory = new File (Environment.getExternalStorageDirectory().getPath()+"/" + exportFolderName); 
 
-			if (!directory.exists()) { 
+			if (!directory.exists()) 
+			{ 
 				directory.mkdir(); 
 			} 
+			
+			File noteDirectory = new File (Environment.getExternalStorageDirectory().getPath()+"/" + exportFolderName +"/" + dateFolder);
+			if (!noteDirectory.exists()) 
+			{ 
+				noteDirectory.mkdir(); 
+			} 
 
-			File file = new File(directory.getPath()+"/"+title); 
-			if (!file.exists() && directory.exists()){ 
-				try { 
+			File file = new File(noteDirectory.getPath()+"/"+title); 
+			if (!file.exists() && noteDirectory.exists())
+			{ 
+				try 
+				{ 
 					file.createNewFile(); 
-				} catch (IOException e) { 
+				} catch (IOException e) 
+				{ 
 					Log.d(TAG,"File creation failed for " + file); 
 				} 
 			} 
@@ -256,7 +268,8 @@ public class NoteList extends ListActivity
                 out.close();
 				Log.e(TAG, "duplicated");
 			} 
-			else { 
+			else 
+			{ 
 				Log.e(TAG, "Failed to write the file to SDCard"); 
 			} 
 		}
