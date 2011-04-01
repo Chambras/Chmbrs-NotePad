@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.util.Linkify;
@@ -46,6 +47,8 @@ public class NotePadEditor extends Activity
 	private final static String EDIT_TITLE = "com.chmbrs.apps.notepad.notes.action.EDIT_TITLE";
 	private final static String REFRESH_NOTES = "com.chmbrs.apps.notepad.notes.action.REFRESH_NOTES";
 	
+	private NotePadApplication app;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -54,6 +57,8 @@ public class NotePadEditor extends Activity
 		
 		final Intent intent = getIntent();
 		final String action = intent.getAction();
+		
+		app = ((NotePadApplication) NotePadEditor.this.getApplication());
 		
 		if (Intent.ACTION_EDIT.equals(action))
 		{
@@ -88,7 +93,12 @@ public class NotePadEditor extends Activity
 		setContentView(R.layout.genericnote);
 		
 		noteText = (EditText)findViewById(R.id.editTextNewNote);
-		noteText.setAutoLinkMask(Linkify.ALL);
+		noteText.setTextSize(app.getTextSize());
+		noteText.setTypeface(app.getTypeface());
+		if(app.getAutoLink())
+		{
+			noteText.setAutoLinkMask(Linkify.ALL);
+		}
 		 // Get the note!
         mCursor = managedQuery(mUri, PROJECTION, null, null, null);
         
@@ -157,7 +167,8 @@ public class NotePadEditor extends Activity
 				
 				if(editorState == STATE_INSERT)
 				{
-					String title = text.substring(0, Math.min(25, length));
+					int titleSize = app.getTitleSize();
+					String title = text.substring(0, Math.min(titleSize, length));
 					int newLine = title.indexOf("\n");
 					if(newLine > 0)
 					{

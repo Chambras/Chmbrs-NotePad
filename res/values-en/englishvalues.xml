@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+	<string name="appVersionName">Chmbrs Note Pad 1.0</string>
+	<string name="appName">Chmbrs Note Pad</string>
+	<string name="appEmail">marcech.am@gmail.com</string>
+	<string name="appWebPage">http://marcelozambranav.blogspot.com/</string>
 	<string name="noNotes">No notes in this account.</string>
 	
 <!--	home menu items-->
@@ -27,6 +32,9 @@
 	<string name="notePadPreferencesTitle">Chmbrs Note Pad Preferences</string>
 	<string name="notePadReminderTitle">Set Reminder Type</string>
 	<string name="notePadCalendarTitle">Send Note to Calendar</string>
+	<string name="notePadAboutMeTitle">About Me</string>
+	<string name="notePadChangeLogTitle">Versions Change Log</string>
+	<string name="notePadExportNotesTitle">Export all your notes</string>
 
 
 <!--	title activity-->
@@ -45,6 +53,8 @@
 <!--	Toast notifications-->
 	<string name="noteSaved">The note has been saved.</string>
 	<string name="noteExported">The note has been exported.</string>
+	<string name="notesExported">All your notes have been exported to your SD card.</string>
+	<string name="noSDCard">SD card not available</string>
 	
 <!--	search-->
 	<string name="searchNotesHint">Search Notes</string>
@@ -73,33 +83,29 @@
 	<string name="prefCatEditorSettings">Editor Settings</string>
 		<string name="prefCatTextSize">Text Size</string>
 		<string name="prefCatTextSizeSummary">Select the text size</string>
-		<string-array name="prefCatTextSizes">
-			<item>Large</item>
-			<item>Medium</item>
-			<item>Small</item>
-		</string-array>
+		
 		<string name="prefCatGuideLines">Guide Lines</string>
 		<string name="prefCatGuideLinesSummary">Display Horizontal Help Lines</string>
 		<string name="prefCatFontType">Font Type</string>
 		<string name="prefCatFontTypeSummary">Select the text font type</string>
-		<string-array name="prefCatFontTypes">
-			<item>Font 1</item>
-			<item>Font 2</item>
-			<item>Font 3</item>
-		</string-array>
+		
 		<string name="prefCatAutoLink">Auto Link</string>
 		<string name="prefCatAutoLinkSummary">Will Automatically link phones, addresses and web links</string>
+		
+	<string name="prefCatEditorColorSettings">Editor Colors</string>
+		<string name="prefCatBackgroundColor">Background Color</string>
+		<string name="prefCatBackgroundColorSummary">Select the editor Background color</string>
+		<string name="prefCatTextColor">Text Color</string>
+		<string name="prefCatTextColorSummary">Select the editor Text color</string>
+		<string name="prefCatLinesColor">Guide Lines Color</string>
+		<string name="prefCatLinesColorSummary">Select the editor Guide Lines color</string>
 	
 	<string name="prefCatNotifications">Notifications</string>
 		<string name="prefCatRingTone">RingTone</string>
 		<string name="prefCatRingToneSummary">Select the reminder ringtone</string>
 		<string name="prefCatLEDColor">LED Color</string>
 		<string name="prefCatLEDColorSummary">Select the Reminders LED Color</string>
-		<string-array name ="prefCatLEDColors">
-			<item>Green</item>
-			<item>Yellow</item>
-			<item>Blue</item>
-		</string-array>
+
 		<string name="prefCatVibrate">Vibrate</string>
 		<string name="prefCatVibrateSummary">Reminders will vibrate</string>
 		
@@ -110,18 +116,8 @@
 		<string name="prefCatTitleSizeSummary">Default Title Size</string>
 		<string name="prefCatSorType">Sort Type</string>
 		<string name="prefCatSorTypeSummary">Select Sort Type</string>
-		<string-array name="prefCatSortTypes">
-			<item>Date Created</item>
-			<item>Date Updated</item>
-			<item>Title</item>
-		</string-array>
-		<string name="prefCatTheme">Theme</string>
-		<string name="prefCatThemeSummary">Select Editor Theme</string>
-		<string-array name="prefCatThemeTypes">
-			<item>Light</item>
-			<item>Dark</item>
-			<item>Black and White</item>
-		</string-array>
+		
+		<string name="exportNotesMessage">Exporting, please wait...</string>
 		
 	<string name="prefCatAbout">About Me</string>
 		<string name="prefCatAboutMe">About Me</string>
@@ -129,6 +125,41 @@
 		<string name="prefCatChangeLog">Change Log</string>
 		<string name="prefCatChangeLogSummary">History Changes</string>
 		<string name="prefCatSendFeedBack">Send FeedBack</string>
-		<string name="prefCatSendFeedBackSummary">Send comments, new ideas, report bugs and issues</string>
+		<string name="prefCatSendFeedBackSummary">Send comments, new ideas, report bugs and issues.</string>
+		<string name="sendFeedBackTitle">Sending FeedBack</string>
+		<string name="prefCatMoreInfoSummary">Opens my web blog in the browser application.</string>
+		<string name="prefCatMoreInfoTitle">More Info</string>
+
+	<string name="aboutMeDescription">I am just a geek who wants to learn new things. I developed this small application just
+		for fun and to learn Android. 
+		\n \nIt has basically everything they suggest to have like Home Screen Widget, Live Folders,
+		Pin to Home, Notifications, Basic Preferences Settings. I tried to follow all their good practices in UI and code. 
+	</string>
+	<string name="currentVersionTitle">Current Version:</string>
+	<string name="grettingsTitle">Thanks to:</string>
+	<string name="grettingsList">Oli y mi chamaco :)</string>
 	
+	<string name="buildTitle">Build Notes:</string>
+
+
+<!-- VERSIONS CHANGE LOG INFORMATION -->	
+<!-- First Version -->
+	<string name="version1">Version 1.0:</string>
+	<string name="buildNotesVersion1">
+		* Basic features like, new, edit, update, delete Notes.\n
+		* Set reminders in notes.\n
+		* Add note to Google Calendar.\n
+		* Custom Preferences.\n
+		* Home Page Widget.\n
+		* Live Folders.\n
+		* Pin to Home.\n
+		* Share Notes ( SMS, Google Voice SMS, FaceBook, Email, etc).\n
+		* Export Notes to SD Card.
+	</string>
+<!-- Second Version -->
+	<string name="version2">Version 2.0:</string>
+	<string name="buildNotesVersion2">
+		* Google Account Authentication.\n
+		* Sync with web application using your Google Account.
+	</string>
 </resources>

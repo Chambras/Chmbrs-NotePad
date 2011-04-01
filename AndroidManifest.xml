@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.chmbrs.apps.notepad"
-      android:versionCode="1"
-      android:versionName="1.0">
+      android:versionCode="1" 
+      android:versionName="@string/appVersionName">
     <uses-sdk android:minSdkVersion="8" />
     
     <uses-permission android:name="android.permission.INTERNET" />
@@ -19,10 +19,10 @@
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
 
-    <application android:icon="@drawable/icon" android:label="@string/app_name" android:debuggable="true">
+    <application android:icon="@drawable/icon" android:label="@string/appName" android:debuggable="true" android:name="NotePadApplication" android:allowClearUserData="true">
     	<provider android:name="NotePadProvider" android:authorities="com.chmbrs.apps.notepad" />
         <activity android:name="NoteList"
-                  android:label="@string/app_name">
+                  android:label="@string/appName">
 <!-- singletop it is better for performance but back behavior gets broken since it is only one activity instance. Need to research more-->
 <!--                  android:launchMode="singleTop "-->
                   
@@ -95,7 +95,6 @@
         
         <activity android:name="NotePadReminder" 
         	android:label="@string/notePadReminderTitle" 
-        	android:icon="@android:drawable/ic_popup_reminder"
         	android:theme="@android:style/Theme.Dialog"
         	android:windowSoftInputMode="stateVisible">
         	<intent-filter>
@@ -104,20 +103,19 @@
 				<data android:mimeType="vnd.android.cursor.item/vnd.chmbrs.note" />
 			</intent-filter>
         </activity>
-        
-        <activity android:name="NotePadCalendar"
-        	android:label="@string/notePadCalendarTitle"
-        	android:icon="@android:drawable/ic_menu_my_calendar"
-        	android:theme="@android:style/Theme.Dialog"
-        	android:windowSoftInputMode="stateVisible">
-        	<intent-filter>
-				<action android:name="com.chmbrs.apps.notepad.notes.action.NOTE_SEND_TO_CALENDAR"/>
-				<category android:name="android.intent.category.DEFAULT"/>
-				<data android:mimeType="vnd.android.cursor.item/vnd.chmbrs.note" />
-			</intent-filter>
+        <activity android:name="ExportNotes" 
+        	android:theme="@android:style/Theme.Dialog" 
+        	android:label="@string/notePadExportNotesTitle">
         </activity>
-		>
-	
+        <activity android:name="AboutMe" 
+        	android:theme="@android:style/Theme.Dialog" 
+        	android:label="@string/notePadAboutMeTitle">
+        </activity>
+        <activity android:name="ChangeLog" 
+        	android:theme="@android:style/Theme.Light" 
+        	android:label="@string/notePadChangeLogTitle">
+        </activity>
+        
 		<service android:name="NotePadSyncService" android:exported="true">
 			<intent-filter>
 				<action android:name="android.content.SyncAdapter" />
@@ -135,7 +133,7 @@
         	</intent-filter>
 		</service>
 		
-        <receiver android:name="NotePadWidgetProvider" android:label="@string/app_name">
+        <receiver android:name="NotePadWidgetProvider" android:label="@string/appName">
         	<intent-filter>
         		<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
         	</intent-filter>

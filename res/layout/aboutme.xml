@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+  
+	<TextView android:id="@+id/textViewAboutMe"
+		android:text="@string/aboutMeDescription"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:paddingLeft="5dip"
+		android:paddingRight="5dip"
+	/>
+	<TextView android:id="@+id/textViewCurrentTitle"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/currentVersionTitle"
+		android:layout_gravity="left"
+		android:paddingTop="10dip"
+		android:paddingLeft="5dip"
+	/>
+	<TextView android:id="@+id/textViewCurrentVersion"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:textSize="26dip"
+		android:layout_gravity="center"
+		
+	/>
+	<TextView android:id="@+id/textViewGrettingsTitle"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/grettingsTitle"
+		android:layout_gravity="center"
+		android:paddingTop="22dip"
+		android:textStyle="bold"
+
+	/>
+	<TextView android:id="@+id/textViewGrettings"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:text="@string/grettingsList"
+		android:layout_gravity="center"
+		android:paddingBottom="10dip"
+	/>
+	
+</LinearLayout>

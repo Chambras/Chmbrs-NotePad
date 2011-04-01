@@ -11,7 +11,8 @@
 		<LinearLayout android:id="@+id/linearLayoutMinutes"
 			android:layout_width="fill_parent" 
 			android:orientation="vertical"
-			android:layout_height="wrap_content" 
+			android:layout_height="wrap_content"
+			android:paddingTop="10dip" 
 			android:paddingBottom="10dip" 
 			android:paddingLeft="10dip" 
 			android:paddingRight="10dip">

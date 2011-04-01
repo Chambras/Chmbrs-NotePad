@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+<!-- Title text size-->
+	<string-array name="prefCatTextSizes">
+		<item>Large</item>
+		<item>Medium</item>
+		<item>Small</item>
+	</string-array>
+	<string-array name="prefCatTextSizesValues">
+		<item>35</item>
+		<item>25</item>
+		<item>15</item>
+	</string-array>
+	
+<!-- Font types -->
+	<string-array name="prefCatFontTypes">
+			<item>Normal</item>
+			<item>Sans</item>
+			<item>Serif</item>
+			<item>Monospace</item>
+	</string-array>
+	<string-array name="prefCatFontTypesValues">
+			<item>0</item>
+			<item>1</item>
+			<item>2</item>
+			<item>3</item>
+	</string-array>
+
+<!-- LED colors -->
+	<string-array name="prefCatLEDColors">
+		<item>Green</item>
+		<item>Yellow</item>
+		<item>Blue</item>
+		<item>Red</item>
+	</string-array>
+	<string-array name="prefCatLEDColorsValues">
+		<item>-16711936</item>
+		<item>-256</item>
+		<item>-16776961</item>
+		<item>-65536</item>
+	</string-array>
+
+<!-- Sort types -->
+	<string-array name="prefCatSortTypes">
+		<item>Date Created</item>
+		<item>Date Updated</item>
+		<item>Title</item>
+	</string-array>
+	<string-array name="prefCatSortTypesValues">
+		<item>created DESC</item>
+		<item>modified DESC</item>
+		<item>title DESC</item>
+	</string-array>
+
+
+	<string-array name="prefCatColors">
+		<item>Black</item>
+		<item>Blue</item>
+		<item>Gray</item>
+		<item>Green</item>
+		<item>Magenta</item>
+		<item>Red</item>
+		<item>White</item>
+		<item>Yellow</item>
+		<item>Cyan</item>
+		<item>Aquamarine</item>
+	</string-array>
+	<string-array name="prefCatColorValues">
+		<item>-16777216</item>
+		<item>-16776961</item>
+		<item>-7829368</item>
+		<item>-16711936</item>
+		<item>-65281</item>
+		<item>-65536</item>
+		<item>-1</item>
+		<item>-256</item>
+		<item>-16711681</item>
+		<item>-10039894</item>
+	</string-array>
+	
+</resources>

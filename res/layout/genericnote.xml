@@ -7,23 +7,9 @@
     android:scrollbars="vertical"
     android:fadingEdge="vertical"
     android:gravity="top"
-    android:textSize="22sp"
+    android:textSize="15sp"
     android:capitalize="sentences"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
 >
 </view>
-
-<!--<LinearLayout-->
-<!--  xmlns:android="http://schemas.android.com/apk/res/android"-->
-<!--  android:layout_width="match_parent"-->
-<!--  android:layout_height="match_parent">-->
-<!--  -->
-<!--    <EditText android:id="@+id/editTextNewNote" -->
-<!--    android:layout_width="fill_parent" -->
-<!--    android:layout_height="fill_parent"-->
-<!--    android:gravity="top"-->
-<!--    android:scrollbars="vertical" -->
-<!--    android:inputType="textCapSentences|textAutoCorrect|textMultiLine">-->
-<!--    </EditText>-->
-<!--</LinearLayout>-->

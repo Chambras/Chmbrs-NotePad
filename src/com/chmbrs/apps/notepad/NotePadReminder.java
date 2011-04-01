@@ -10,6 +10,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,11 +42,13 @@ public class NotePadReminder extends Activity
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_LEFT_ICON);
 		final Intent intent = getIntent();
 		noteTitle = intent.getExtras().getString("noteTitle");
 		noteBody = intent.getExtras().getString("noteBody");
 		
 		setContentView(R.layout.remindersmenu);
+		getWindow().setFeatureDrawableResource(Window.FEATURE_LEFT_ICON, android.R.drawable.ic_popup_reminder);
 		
 		minuteText = (EditText)findViewById(R.id.editTextMinutes);
 		hourText = (EditText)findViewById(R.id.editTextHours);

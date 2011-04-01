@@ -37,6 +37,8 @@ public class NotePadProvider extends ContentProvider
     
     private DatabaseHelper mOpenHelper;
     
+    private NotePadApplication app;
+    
     /**
      * This class helps open, create, and upgrade the database file.
      */
@@ -161,6 +163,7 @@ public class NotePadProvider extends ContentProvider
 	public boolean onCreate() 
 	{
 		mOpenHelper = new DatabaseHelper(getContext());
+		app = (NotePadApplication)getContext().getApplicationContext();
         return true;
 	}
 
@@ -188,13 +191,15 @@ public class NotePadProvider extends ContentProvider
             throw new IllegalArgumentException("Unknown URI " + uri);
         }
 
-        // If no sort order is specified use the default
+        // If no sort order is specified use the default 
         String orderBy;
         if (TextUtils.isEmpty(sortOrder)) {
-            orderBy = Notes.DEFAULT_SORT_ORDER;
+//			orderBy = Notes.DEFAULT_SORT_ORDER;  //now it gets the default sort type from the preferences. 
+        	orderBy = app.getSortType();
         } else {
             orderBy = sortOrder;
         }
+        //Log.i(TAG, "provider sort " + orderBy);
 
         // Get the database and run the query
         SQLiteDatabase db = mOpenHelper.getReadableDatabase();

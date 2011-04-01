@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView   xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+<LinearLayout
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:orientation="vertical">
+  
+<!-- Version 2 -->
+	<LinearLayout android:id="@+id/linearLayoutVersion2"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:paddingLeft="10dip"
+		android:paddingRight="10dip"
+		android:paddingTop="5dip"
+		>
+		 <TextView android:id="@+id/textViewVersion2"
+		 	android:layout_width="fill_parent"
+		 	android:layout_height="wrap_content"
+		 	android:text="@string/version2"
+		 />
+		 <TextView android:id="@+id/textViewBuildTitle"
+		 	android:layout_width="fill_parent"
+		 	android:layout_height="wrap_content"
+		 	android:text="@string/buildTitle"
+		 />
+		 <TextView android:id="@+id/textViewBuildNotesVersion2"
+		 	android:layout_width="fill_parent"
+		 	android:layout_height="wrap_content"
+		 	android:text="@string/buildNotesVersion2"
+		 />
+	</LinearLayout>
+
+<!-- Version 2 -->
+	<LinearLayout android:id="@+id/linearLayoutVersion1"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:paddingLeft="10dip"
+		android:paddingRight="10dip"
+		android:paddingTop="5dip">
+		 <TextView android:id="@+id/textViewVersion1"
+		 	android:layout_width="fill_parent"
+		 	android:layout_height="wrap_content"
+		 	android:text="@string/version1"
+		 />
+		 <TextView android:id="@+id/textViewBuildTitle"
+		 	android:layout_width="fill_parent"
+		 	android:layout_height="wrap_content"
+		 	android:text="@string/buildTitle"
+		 />
+		 <TextView android:id="@+id/textViewBuildNotesVersion1"
+		 	android:layout_width="fill_parent"
+		 	android:layout_height="wrap_content"
+		 	android:text="@string/buildNotesVersion1"
+		 />
+	</LinearLayout>
+</LinearLayout>
+</ScrollView>

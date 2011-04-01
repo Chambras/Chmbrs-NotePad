@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+	<ProgressBar android:id="@+id/progressBarExportNotes"
+		android:layout_width="wrap_content" 
+		android:layout_height="wrap_content"
+		android:padding="10dip"
+	/>
+	<TextView android:id="@+id/textViewExportMessage" 
+		android:text="@string/exportNotesMessage"
+		android:layout_height="wrap_content" 
+		android:layout_width="wrap_content"
+		android:layout_toRightOf="@+id/progressBarExportNotes"
+		android:layout_alignTop="@+id/progressBarExportNotes"
+		android:layout_alignBottom="@+id/progressBarExportNotes"
+		android:gravity="center_vertical"
+	/>
+	<TextView android:id="@+id/textViewExportStatus" 
+	android:text=""
+	android:layout_below="@+id/progressBarExportNotes"
+	android:layout_height="wrap_content" 
+	android:layout_width="fill_parent"
+	android:gravity="center"
+	android:padding="10dip"
+	/>
+</RelativeLayout>

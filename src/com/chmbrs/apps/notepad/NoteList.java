@@ -50,13 +50,13 @@ public class NoteList extends ListActivity
     /** The index of the title column */
     private static final int COLUMN_INDEX_TITLE = 1;
     
-    private ContentObserver noteObserver;
-    
     private GoogleAnalyticsTracker tracker;
     
     protected AccountManager  accountManager;
     
     private static final String exportFolderName = "chmbrs_exported_notes";
+    
+    private NotePadApplication app;
 	
     /** Called when the activity is first created. */
     @Override
@@ -68,6 +68,8 @@ public class NoteList extends ListActivity
         tracker = GoogleAnalyticsTracker.getInstance();
         tracker.start("UA-20712505-2", this);
         Log.i(TAG, "starting the main activity");
+        
+        app = ((NotePadApplication) NoteList.this.getApplication());
 
         Intent intent = getIntent();
         handleIntent(intent);
@@ -98,9 +100,9 @@ public class NoteList extends ListActivity
 		else if(Intent.ACTION_MAIN.equals(intent.getAction()))
 		{   
 	        getListView().setOnCreateContextMenuListener(this);
-	        Log.i(TAG, "starting the app " + getIntent().getAction());
+	        Log.i(TAG, "starting the app " + getIntent().getData());
 	        
-	        Cursor cursor = managedQuery(getIntent().getData(), PROJECTION, null, null, Notes.DEFAULT_SORT_ORDER);
+	        Cursor cursor = managedQuery(getIntent().getData(), PROJECTION, null, null, null);
 	        
 	        String [] from = new String[] {Notes.TITLE, Notes.NOTE}; 
 	        int [] to = new int[] {R.id.text1, R.id.text2};
@@ -116,7 +118,7 @@ public class NoteList extends ListActivity
 	private void showResults(String query) 
 	{
 		Log.i(TAG, "displaing results: " );
-		Cursor searchCursor = managedQuery(Notes.CONTENT_URI, null, "note like '%"+query+"%'", null, Notes.DEFAULT_SORT_ORDER);
+		Cursor searchCursor = managedQuery(Notes.CONTENT_URI, null, "note like '%"+query+"%'", null, null);
 		if (searchCursor != null)
 		{
 			String [] from = new String[] {Notes.TITLE}; 
@@ -188,13 +190,13 @@ public class NoteList extends ListActivity
 				break;
 			case R.id.contextItemExportToTextFile:
 				Log.i(TAG, "exportando nota");
-			try 
-			{
-				exportNoteToSDCard(noteTitle.getText().toString(), noteContent.getText().toString());
-			} catch (IOException e) 
-			{
-				e.printStackTrace();
-			}
+				try 
+				{
+					exportNoteToSDCard(noteTitle.getText().toString(), noteContent.getText().toString());
+				} catch (IOException e) 
+				{
+					e.printStackTrace();
+				}
 				break;
 			default:
 				break;
@@ -276,6 +278,7 @@ public class NoteList extends ListActivity
 		}
 		else
 		{
+			Toast.makeText(this, R.string.noSDCard, Toast.LENGTH_SHORT).show();
 			Log.i(TAG, "SD card not mounted");
 		}
 	}
@@ -345,12 +348,11 @@ public class NoteList extends ListActivity
 		                "Button",  // Action
 		                "categories", // Label
 		                66);       // Value
-				Log.i(TAG, "loading categories");
+//				Log.i(TAG, "loading categories");
 				break;
 			case R.id.itemSettings:
 				//tracker.setCustomVar(1, "Navigation Type", "Button click", 3);
 				startActivity(new Intent(this, NotePadPreferences.class));
-				//Toast.makeText(this, "Settings", Toast.LENGTH_LONG).show();
 				break;
 		}
 		return true;
@@ -361,25 +363,25 @@ public class NoteList extends ListActivity
 	{
 		Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
 		Log.i(TAG, "editing note " + id);
-//		String action = getIntent().getAction();
 		//Log.i(TAG, "editing note " + uri + " with action " + action);
 		startActivity(new Intent(Intent.ACTION_EDIT, uri));
 	}
-
-	
 	
 	@Override
 	protected void onResume() 
 	{
-		noteObserver = new ContentObserver(new Handler()) {
-			@Override
-			public void onChange(boolean selfChange) 
-			{
-				postNoteChanges();
-			}
-		};
-		getContentResolver().registerContentObserver(Notes.CONTENT_URI, true, noteObserver );
+		refreshNotes();
 		super.onResume();
+	}
+
+	private void refreshNotes() 
+	{
+		Cursor cursor = managedQuery(getIntent().getData(), PROJECTION, null, null, app.getSortType());
+        
+        String [] from = new String[] {Notes.TITLE, Notes.NOTE}; 
+        int [] to = new int[] {R.id.text1, R.id.text2};
+        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.noterow, cursor, from, to);
+        setListAdapter(adapter);
 	}
 
 	protected void postNoteChanges() 
@@ -390,12 +392,6 @@ public class NoteList extends ListActivity
 	@Override
 	protected void onPause() 
 	{
-		if(noteObserver != null)
-		{
-			getContentResolver().unregisterContentObserver(noteObserver);
-			noteObserver = null;
-		}
-		
 		super.onPause();
 		tracker.dispatch();
 		Log.i(TAG, "pausing the app");
