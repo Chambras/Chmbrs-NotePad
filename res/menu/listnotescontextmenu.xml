@@ -21,11 +21,11 @@
     	android:id="@+id/contextItemSendToCalendar"
     	android:title="@string/contentMenuSendToCalendar"
     />
-    <item 
-    	android:id="@+id/contextItemOpenAppNote" 
-    	android:title="@string/contentMenuOpenAppNote"
-    	android:enabled="false"
-    />
+<!--    <item -->
+<!--    	android:id="@+id/contextItemOpenAppNote" -->
+<!--    	android:title="@string/contentMenuOpenAppNote"-->
+<!--    	android:enabled="false"-->
+<!--    />-->
     <item 
     	android:id="@+id/contextItemExportToTextFile" 
     	android:title="@string/contentmenuExportNote"

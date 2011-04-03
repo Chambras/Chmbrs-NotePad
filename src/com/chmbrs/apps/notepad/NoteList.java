@@ -185,9 +185,9 @@ public class NoteList extends ListActivity
 			case R.id.contextItemSendToCalendar:
 				sendToCalendar(noteTitle.getText().toString(), noteContent.getText().toString());
 				break;
-			case R.id.contextItemOpenAppNote:
-				Log.i(TAG, "abriendo app nota");
-				break;
+//			case R.id.contextItemOpenAppNote:
+//				Log.i(TAG, "abriendo app nota");
+//				break;
 			case R.id.contextItemExportToTextFile:
 				Log.i(TAG, "exportando nota");
 				try 

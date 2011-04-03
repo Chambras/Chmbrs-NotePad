@@ -61,7 +61,7 @@
 	<string name="searchSettingsDescription">Titles and Text in your Notes</string>
 
 <!--live folders-->
-	<string name="liveFolderLabel">Note Pad</string>
+	<string name="liveFolderLabel">Chmbrs Note Pad</string>
 	<string name="defaultLiveFolderName">All My Notes</string>
 	
 <!--	widget-->
@@ -156,10 +156,10 @@
 		* Share Notes ( SMS, Google Voice SMS, FaceBook, Email, etc).\n
 		* Export Notes to SD Card.
 	</string>
-<!-- Second Version -->
-	<string name="version2">Version 2.0:</string>
-	<string name="buildNotesVersion2">
-		* Google Account Authentication.\n
-		* Sync with web application using your Google Account.
-	</string>
+<!-- Second Version near future-->
+<!--	<string name="version2">Version 2.0:</string>-->
+<!--	<string name="buildNotesVersion2">-->
+<!--		* Google Account Authentication.\n-->
+<!--		* Sync with web application using your Google Account.-->
+<!--	</string>-->
 </resources>

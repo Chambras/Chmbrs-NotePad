@@ -227,8 +227,8 @@ public class NotePadEditor extends Activity
 			case R.id.itemShareNote:
 				shareNote();
 				break;
-			case R.id.itemOpenApp:
-				break;
+//			case R.id.itemOpenApp:
+//				break;
 			case R.id.itemSetReminder:
 				setAlarm();
 				break;
