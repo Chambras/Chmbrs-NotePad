@@ -67,6 +67,7 @@ public class NoteList extends ListActivity
         setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
         tracker = GoogleAnalyticsTracker.getInstance();
         tracker.start("UA-20712505-2", this);
+        
         Log.i(TAG, "starting the main activity");
         
         app = ((NotePadApplication) NoteList.this.getApplication());
@@ -103,11 +104,11 @@ public class NoteList extends ListActivity
 	        Log.i(TAG, "starting the app " + getIntent().getData());
 	        
 	        Cursor cursor = managedQuery(getIntent().getData(), PROJECTION, null, null, null);
-	        
 	        String [] from = new String[] {Notes.TITLE, Notes.NOTE}; 
 	        int [] to = new int[] {R.id.text1, R.id.text2};
 	        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.noterow, cursor, from, to);
 	        setListAdapter(adapter);
+	        //getListView().setFastScrollEnabled(true);
 	        Log.i(TAG, "loading notes.... " + cursor.getCount());
 		}
 		/*accountManager = AccountManager.get(this);
