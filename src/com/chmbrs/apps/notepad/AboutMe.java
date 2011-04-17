@@ -16,6 +16,8 @@
 
 package com.chmbrs.apps.notepad;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Window;
@@ -28,6 +30,8 @@ public class AboutMe extends Activity
 	private TextView currentVersion;
 	
 	private NotePadApplication app;
+
+	private GoogleAnalyticsTracker tracker;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -42,5 +46,18 @@ public class AboutMe extends Activity
 		
 		currentVersion = (TextView)findViewById(R.id.textViewCurrentVersion);
 		currentVersion.setText(app.getCurrentApplicationVersionName());
+		
+		tracker = app.getTracker();
+		tracker.start(app.getGoogleAnalyticsAccount(), this);
+		tracker.trackPageView("About Me");
 	}
+
+	@Override
+	protected void onPause() 
+	{
+		super.onPause();
+		
+	}
+	
+	
 }

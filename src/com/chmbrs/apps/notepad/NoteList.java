@@ -73,6 +73,8 @@ public class NoteList extends ListActivity
     
     private static final String exportFolderName = "chmbrs_exported_notes";
     
+    private static final String GOOGLENALYTICSACCOUNT = "UA-20712505-2";
+    
     private NotePadApplication app;
 	
     /** Called when the activity is first created. */
@@ -82,8 +84,7 @@ public class NoteList extends ListActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notelist);
         setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
-        tracker = GoogleAnalyticsTracker.getInstance();
-        tracker.start("UA-20712505-2", this);
+
         
         Log.i(TAG, "starting the main activity");
         
@@ -117,6 +118,13 @@ public class NoteList extends ListActivity
         }
 		else if(Intent.ACTION_MAIN.equals(intent.getAction()))
 		{   
+//	        tracker = GoogleAnalyticsTracker.getInstance();
+			if (tracker == null)
+			{
+		        tracker = app.getTracker();
+		        tracker.start(GOOGLENALYTICSACCOUNT, this);				
+			}
+			
 	        getListView().setOnCreateContextMenuListener(this);
 	        Log.i(TAG, "starting the app " + getIntent().getData());
 	        

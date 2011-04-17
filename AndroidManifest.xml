@@ -16,12 +16,10 @@
     limitations under the License.
 -->
 
-
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.chmbrs.apps.notepad"
       android:versionCode="1" 
-      android:versionName="@string/appVersionName">
+      android:versionName="@string/appVersionName" android:installLocation="internalOnly">
     <uses-sdk android:minSdkVersion="8" />
     
     <uses-permission android:name="android.permission.INTERNET" />
@@ -37,6 +35,7 @@
 	<uses-permission android:name="android.permission.READ_SYNC_STATS" />
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:smallScreens="true" android:normalScreens="true"/>
 
     <application android:icon="@drawable/icon" android:label="@string/appName" android:debuggable="true" android:name="NotePadApplication" android:allowClearUserData="true">
     	<provider android:name="NotePadProvider" android:authorities="com.chmbrs.apps.notepad" />

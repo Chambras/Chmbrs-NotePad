@@ -17,6 +17,8 @@
 
 package com.chmbrs.apps.notepad;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -43,6 +45,8 @@ public class NotePadApplication extends Application
 	private int lineColor;
 	
 	private String currentApplicationVersionName;
+	private static final String GOOGLENALYTICSACCOUNT = "UA-20712505-2";
+	private static GoogleAnalyticsTracker tracker;
 	
 	
 	@Override
@@ -50,6 +54,7 @@ public class NotePadApplication extends Application
 	{
 		super.onCreate();
 		Log.i(TAG, "creating Application object");
+	    tracker = GoogleAnalyticsTracker.getInstance();
 		preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		try 
 		{
@@ -151,5 +156,15 @@ public class NotePadApplication extends Application
 	{
 		lineColor = Integer.parseInt(preferences.getString("listPreferenceLinesColor", "-10039894"));
 		return lineColor;
+	}
+	
+	public String getGoogleAnalyticsAccount()
+	{
+		return GOOGLENALYTICSACCOUNT;
+	}
+	
+	public GoogleAnalyticsTracker getTracker()
+	{
+		return tracker;
 	}
 }
