@@ -17,6 +17,8 @@
 
 package com.chmbrs.apps.notepad;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.content.Intent;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
@@ -31,12 +33,19 @@ public class NotePadPreferences extends PreferenceActivity
 {
 
 	private final static String TAG ="PreferenceActivity";
+	private NotePadApplication app;
+	private GoogleAnalyticsTracker tracker;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.notepadpreferences);
+		
+		app = (NotePadApplication)NotePadPreferences.this.getApplication();
+		
+		tracker = app.getTracker();
+		
 		Preference exportNotes = (Preference)findPreference("preferenceExportNotes");
 		Preference aboutMe = (Preference)findPreference("preferenceAboutMe");
 		Preference changeLog = (Preference)findPreference("preferenceChangeLog");
@@ -57,22 +66,39 @@ public class NotePadPreferences extends PreferenceActivity
 		{
 			if(preference.getKey().equals("preferenceExportNotes"))
 			{
+				tracker.trackEvent(
+		                "Preferences", 
+		                "Tools",
+		                "Export All Notes",
+		                 0);
 				exportAllNotes();
 			}
 			else if(preference.getKey().equals("preferenceAboutMe"))
 			{
+				tracker.trackPageView("/About Me");
 				showAboutMe();
 			}
 			else if (preference.getKey().equals("preferenceChangeLog"))
 			{
+				tracker.trackPageView("/Change Log");
 				showChangeLog();
 			}
 			else if (preference.getKey().equals("preferenceSendFeedBack"))
 			{
+				tracker.trackEvent(
+		                "Preferences", 
+		                "About Me",
+		                "Send FeedBack",
+		                 0);
 				sendFeedBack();
 			}
 			else if (preference.getKey().equals("preferenceMoreInfo"))
 			{
+				tracker.trackEvent(
+		                "Preferences", 
+		                "About Me",
+		                "Open My Blog",
+		                 0);
 				openMyBlog();
 			}
 			return true;

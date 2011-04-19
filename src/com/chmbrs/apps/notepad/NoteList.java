@@ -73,8 +73,6 @@ public class NoteList extends ListActivity
     
     private static final String exportFolderName = "chmbrs_exported_notes";
     
-    private static final String GOOGLENALYTICSACCOUNT = "UA-20712505-2";
-    
     private NotePadApplication app;
 	
     /** Called when the activity is first created. */
@@ -84,13 +82,15 @@ public class NoteList extends ListActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.notelist);
         setDefaultKeyMode(DEFAULT_KEYS_SEARCH_LOCAL);
-
-        
-        Log.i(TAG, "starting the main activity");
         
         app = ((NotePadApplication) NoteList.this.getApplication());
+        if (tracker == null)
+		{
+	        tracker = app.getTracker();			
+		}
 
         Intent intent = getIntent();
+        Log.i(TAG, "starting the main activity " + intent.getAction());
         handleIntent(intent);
     }
 
@@ -109,6 +109,7 @@ public class NoteList extends ListActivity
             intent.setData(Notes.CONTENT_URI);
             Log.i(TAG, "no data in the intent...");
         }
+		
 		if(Intent.ACTION_SEARCH.equals(intent.getAction()))
         {
 			String query = intent.getStringExtra(SearchManager.QUERY);
@@ -118,13 +119,6 @@ public class NoteList extends ListActivity
         }
 		else if(Intent.ACTION_MAIN.equals(intent.getAction()))
 		{   
-//	        tracker = GoogleAnalyticsTracker.getInstance();
-			if (tracker == null)
-			{
-		        tracker = app.getTracker();
-		        tracker.start(GOOGLENALYTICSACCOUNT, this);				
-			}
-			
 	        getListView().setOnCreateContextMenuListener(this);
 	        Log.i(TAG, "starting the app " + getIntent().getData());
 	        
@@ -143,12 +137,12 @@ public class NoteList extends ListActivity
 
 	private void showResults(String query) 
 	{
-		Log.i(TAG, "displaing results: " );
-		Cursor searchCursor = managedQuery(Notes.CONTENT_URI, null, "note like '%"+query+"%'", null, null);
+		Log.i(TAG, "displaing results for: " + query );
+		Cursor searchCursor = managedQuery(Notes.CONTENT_URI, PROJECTION, "note like '%"+query+"%' or title like '%" +query+"%'", null, null);
 		if (searchCursor != null)
 		{
-			String [] from = new String[] {Notes.TITLE}; 
-	        int [] to = new int[] {R.id.text1};
+			String [] from = new String[] {Notes.TITLE, Notes.NOTE}; 
+	        int [] to = new int[] {R.id.text1, R.id.text2};
 	        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.noterow, searchCursor, from, to);
 	        setListAdapter(adapter);
 		}
@@ -172,6 +166,7 @@ public class NoteList extends ListActivity
 		}
 		menu.setHeaderTitle(cursor.getString(COLUMN_INDEX_TITLE));
 		getMenuInflater().inflate(R.menu.listnotescontextmenu, menu);
+		tracker.trackPageView("/Context Menu");
 	}
 
 	@Override
@@ -193,32 +188,63 @@ public class NoteList extends ListActivity
 			case R.id.contextItemOpenNote:
 				//Uri uri = ContentUris.withAppendedId(getIntent().getData(), info.id);
 				startActivity(new Intent(Intent.ACTION_EDIT, noteUri));
-				Log.i(TAG, "abriendo nota");
+				tracker.trackPageView("/NotePad Editor");
+				tracker.trackEvent(
+		                "Note List", 
+		                "Context Menu",
+		                "Open Note",
+		                 0);
+				//Log.i(TAG, "abriendo nota");
 				break;
 			case R.id.contextItemDeleteNote:
 				//Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), info.id);
 				getContentResolver().delete(noteUri, null, null);
-				Log.i(TAG, "borrando nota");
+				//Log.i(TAG, "borrando nota");
+				tracker.trackEvent(
+		                "Note List",
+		                "Context Menu",
+		                "Delete Note",
+		                 0);
 				break;
 			case R.id.contextItemShareNote:
-				Log.i(TAG, "compartiendo nota " + info.id);
+				//Log.i(TAG, "compartiendo nota " + info.id);
 				shareNote(noteContent.getText().toString());
+				tracker.trackEvent(
+		                "Note List",
+		                "Context Menu",
+		                "Share Note",
+		                 0);
 				break;
 			case R.id.contextItemPinNote:
-				Log.i(TAG,"pin note to home screen " + noteTitle.getText());
+				//Log.i(TAG,"pin note to home screen " + noteTitle.getText());
 				setupShortCut(info.id, noteTitle.getText().toString());
+				tracker.trackEvent(
+		                "Note List",
+		                "Context Menu",
+		                "PIN Note",
+		                 0);
 				break;
 			case R.id.contextItemSendToCalendar:
 				sendToCalendar(noteTitle.getText().toString(), noteContent.getText().toString());
+				tracker.trackEvent(
+		                "Note List",
+		                "Context Menu",
+		                "Send Note to Calendar",
+		                 0);
 				break;
 //			case R.id.contextItemOpenAppNote:
 //				Log.i(TAG, "abriendo app nota");
 //				break;
 			case R.id.contextItemExportToTextFile:
-				Log.i(TAG, "exportando nota");
+				//Log.i(TAG, "exportando nota");
 				try 
 				{
 					exportNoteToSDCard(noteTitle.getText().toString(), noteContent.getText().toString());
+					tracker.trackEvent(
+			                "Note List",
+			                "Context Menu",
+			                "Export Note",
+			                 0);
 				} catch (IOException e) 
 				{
 					e.printStackTrace();
@@ -356,28 +382,32 @@ public class NoteList extends ListActivity
 		{
 			case R.id.itemAddNote:
 				startActivity(new Intent(Intent.ACTION_INSERT, getIntent().getData()));
-				Log.i(TAG, "creando una nueva nota...");
-				tracker.trackPageView("/Add New Note");
+				tracker.trackPageView("/NotePad Editor");
+				tracker.trackEvent(
+		                "Note List",
+		                "Options Menu",
+		                "Add Note",
+		                 0);
 				break;
 			case R.id.itemSearch:
+				tracker.trackEvent(
+		                "Note List",
+		                "Options Menu",
+		                "Search",
+		                 0);
 				onSearchRequested();
-		        tracker.trackEvent(
-		                "Clicks",  // Category
-		                "Button",  // Action
-		                "search", // Label
-		                77);
 				Log.i(TAG, "search notes: ");
 				break;
 			case R.id.itemCategories:
-		        tracker.trackEvent(
-		                "Clicks",  // Category
-		                "Button",  // Action
-		                "categories", // Label
-		                66);       // Value
 //				Log.i(TAG, "loading categories");
 				break;
 			case R.id.itemSettings:
-				//tracker.setCustomVar(1, "Navigation Type", "Button click", 3);
+				tracker.trackPageView("/Settings");
+				tracker.trackEvent(
+		                "Note List",
+		                "Options Menu",
+		                "Settings",
+		                 0);
 				startActivity(new Intent(this, NotePadPreferences.class));
 				break;
 		}
@@ -390,17 +420,27 @@ public class NoteList extends ListActivity
 		Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
 		Log.i(TAG, "editing note " + id);
 		//Log.i(TAG, "editing note " + uri + " with action " + action);
+		try {
+			tracker.trackPageView("/NotePad Editor");
+			tracker.trackEvent(
+	                "Note List", 
+	                "List Item",
+	                "Open Note",
+	                 0);
+		} catch (Exception e) {
+			Log.i(TAG, e.toString());
+		}
+
 		startActivity(new Intent(Intent.ACTION_EDIT, uri));
 	}
 	
 	@Override
 	protected void onResume() 
 	{
-		refreshNotes();
 		super.onResume();
 	}
 
-	private void refreshNotes() 
+/*	private void refreshNotes() 
 	{
 		Cursor cursor = managedQuery(getIntent().getData(), PROJECTION, null, null, app.getSortType());
         
@@ -408,7 +448,7 @@ public class NoteList extends ListActivity
         int [] to = new int[] {R.id.text1, R.id.text2};
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.noterow, cursor, from, to);
         setListAdapter(adapter);
-	}
+	}*/
 
 	protected void postNoteChanges() 
 	{
@@ -419,7 +459,6 @@ public class NoteList extends ListActivity
 	protected void onPause() 
 	{
 		super.onPause();
-		tracker.dispatch();
 		Log.i(TAG, "pausing the app");
 	}
 
@@ -427,6 +466,7 @@ public class NoteList extends ListActivity
 	protected void onDestroy() 
 	{
 		super.onDestroy();
-		tracker.stop();
+		app.dispatchTracker();
+		app.stopTracker();
 	}
 }

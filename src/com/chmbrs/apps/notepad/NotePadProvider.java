@@ -189,7 +189,6 @@ public class NotePadProvider extends ContentProvider
 	{
 		SQLiteQueryBuilder qb = new SQLiteQueryBuilder();
         qb.setTables(NOTES_TABLE_NAME);
-
         switch (sUriMatcher.match(uri)) {
         case NOTES:
             qb.setProjectionMap(sNotesProjectionMap);

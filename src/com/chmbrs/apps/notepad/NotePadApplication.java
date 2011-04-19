@@ -20,9 +20,11 @@ package com.chmbrs.apps.notepad;
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -46,7 +48,7 @@ public class NotePadApplication extends Application
 	
 	private String currentApplicationVersionName;
 	private static final String GOOGLENALYTICSACCOUNT = "UA-20712505-2";
-	private static GoogleAnalyticsTracker tracker;
+	private GoogleAnalyticsTracker tracker;
 	
 	
 	@Override
@@ -55,6 +57,7 @@ public class NotePadApplication extends Application
 		super.onCreate();
 		Log.i(TAG, "creating Application object");
 	    tracker = GoogleAnalyticsTracker.getInstance();
+	    tracker.start(GOOGLENALYTICSACCOUNT, this);
 		preferences = PreferenceManager.getDefaultSharedPreferences(this);
 		try 
 		{
@@ -166,5 +169,25 @@ public class NotePadApplication extends Application
 	public GoogleAnalyticsTracker getTracker()
 	{
 		return tracker;
+	}
+	
+	public void stopTracker()
+	{
+		tracker.stop();
+	}
+	
+	public void dispatchTracker()
+	{
+		Log.i(TAG,"dispatching info...");
+		if(isOnline())
+		{
+			tracker.dispatch();
+		}
+	}
+	
+	public boolean isOnline()
+	{
+		ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+		return cm.getActiveNetworkInfo().isConnectedOrConnecting();
 	}
 }

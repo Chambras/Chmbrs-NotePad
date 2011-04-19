@@ -31,8 +31,6 @@ public class AboutMe extends Activity
 	
 	private NotePadApplication app;
 
-	private GoogleAnalyticsTracker tracker;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -46,10 +44,6 @@ public class AboutMe extends Activity
 		
 		currentVersion = (TextView)findViewById(R.id.textViewCurrentVersion);
 		currentVersion.setText(app.getCurrentApplicationVersionName());
-		
-		tracker = app.getTracker();
-		tracker.start(app.getGoogleAnalyticsAccount(), this);
-		tracker.trackPageView("About Me");
 	}
 
 	@Override
@@ -58,6 +52,4 @@ public class AboutMe extends Activity
 		super.onPause();
 		
 	}
-	
-	
 }

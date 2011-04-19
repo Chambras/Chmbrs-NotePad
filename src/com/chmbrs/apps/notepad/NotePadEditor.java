@@ -18,6 +18,8 @@
 package com.chmbrs.apps.notepad;
 
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -51,6 +53,8 @@ public class NotePadEditor extends Activity
 	private Cursor mCursor;
 	private String noteOriginalContent;
 	
+	private GoogleAnalyticsTracker tracker;
+	
     /**
      * Standard projection for the interesting columns of a normal note.
      */
@@ -76,6 +80,11 @@ public class NotePadEditor extends Activity
 		final String action = intent.getAction();
 		
 		app = ((NotePadApplication) NotePadEditor.this.getApplication());
+		
+		if (tracker == null)
+		{
+	        tracker = app.getTracker();			
+		}
 		
 		if (Intent.ACTION_EDIT.equals(action))
 		{
@@ -229,24 +238,46 @@ public class NotePadEditor extends Activity
 		{
 			case R.id.itemDiscardNote:
 				cancelNote();
+				tracker.trackEvent(
+		                "Edit Note",
+		                "Options Menu",
+		                "Discard Note",
+		                 0);
 				break;
 			case R.id.itemEditNoteTitle:
-				Log.i(TAG, "editando titulo " + getIntent().getData());
+				//Log.i(TAG, "editando titulo " + getIntent().getData());
 				startActivity(new Intent(EDIT_TITLE, getIntent().getData()));
+				tracker.trackPageView("/NotePad Title Editor");
 				break;
 			case R.id.itemDiscardNoteChanges:
+				tracker.trackEvent(
+		                "Edit Note",
+		                "Options Menu",
+		                "Discard Changes",
+		                 0);
 				cancelNote();
 				break;
 			case R.id.itemDeleteNote:
+				tracker.trackEvent(
+		                "Edit Note",
+		                "Options Menu",
+		                "Delete Note",
+		                 0);
 				deleteNote();
 				finish();
 				break;
 			case R.id.itemShareNote:
+				tracker.trackEvent(
+		                "Edit Note",
+		                "Options Menu",
+		                "Share Note",
+		                 0);
 				shareNote();
 				break;
 //			case R.id.itemOpenApp:
 //				break;
 			case R.id.itemSetReminder:
+				tracker.trackPageView("/NotePad Reminder");
 				setAlarm();
 				break;
 			default:

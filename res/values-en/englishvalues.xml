@@ -61,9 +61,9 @@
 <!--	context menu items-->
 	<string name="contextMenuOpenNote">Open Note</string>
 	<string name="contentextMenuDeleteNote">Delete Note</string>
-	<string name="contentextMenuShareNote">Share</string>
+	<string name="contentextMenuShareNote">Share Note</string>
 	<string name="contentMenuOpenAppNote">Open Related App</string>
-	<string name="contentMenupinNoteHomeScreen">PIN note in home Screen</string>
+	<string name="contentMenupinNoteHomeScreen">PIN Note in Home Screen</string>
 	<string name="contentMenuSendToCalendar">Send to Calendar</string>
 	<string name="contentmenuExportNote">Export Note to Text File</string>
 	

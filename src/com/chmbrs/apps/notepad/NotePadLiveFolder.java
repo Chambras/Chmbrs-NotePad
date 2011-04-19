@@ -17,6 +17,8 @@
 
 package com.chmbrs.apps.notepad;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -28,6 +30,9 @@ public class NotePadLiveFolder extends Activity
 {
 	public static final Uri CONTENT_URI = Uri.parse("content://"+ Notes.PROVIDER_NAME+"/live_folders/notes");
 	public static final Uri NOTE_URI = Uri.parse("content://"+ Notes.PROVIDER_NAME+"/notes/#");
+	
+	private GoogleAnalyticsTracker tracker;
+	private NotePadApplication app;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
@@ -35,9 +40,16 @@ public class NotePadLiveFolder extends Activity
 		
 		final Intent intent = getIntent();
 		final String action = intent.getAction();
+		app = ((NotePadApplication) NotePadLiveFolder.this.getApplication());
+		tracker = app.getTracker();	
 		
 		if(LiveFolders.ACTION_CREATE_LIVE_FOLDER.equals(action))
 		{
+			tracker.trackEvent(
+	                "Home Screen", 
+	                "Live Folder",
+	                "Create Live Folder",
+	                 0);
 			setResult(RESULT_OK, createLiveFolder(this, CONTENT_URI, getString(R.string.defaultLiveFolderName), android.R.drawable.ic_menu_agenda));
 		}
 		else

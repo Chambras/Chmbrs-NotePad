@@ -19,6 +19,8 @@ package com.chmbrs.apps.notepad;
 
 import java.util.Date;
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -54,12 +56,19 @@ public class NotePadReminder extends Activity
 	
 	private String timeIncrementType="minutes";
 	private long incrementTime = 0;
+	
+	private NotePadApplication app;
+	private GoogleAnalyticsTracker tracker; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_LEFT_ICON);
+		
+		app = (NotePadApplication)NotePadReminder.this.getApplication();
+		tracker = app.getTracker();
+		
 		final Intent intent = getIntent();
 		noteTitle = intent.getExtras().getString("noteTitle");
 		noteBody = intent.getExtras().getString("noteBody");
@@ -99,6 +108,11 @@ public class NotePadReminder extends Activity
 			@Override
 			public void onClick(View v) 
 			{
+				tracker.trackEvent(
+		                "NotePad Reminder",
+		                "Button",
+		                "Cancel Reminder",
+		                 0);
 				finish();
 			}
 		});
@@ -108,6 +122,11 @@ public class NotePadReminder extends Activity
 			@Override
 			public void onClick(View v) 
 			{
+				tracker.trackEvent(
+		                "NotePad Reminder",
+		                "Button",
+		                "Save Reminder",
+		                 0);
 				setAlarmNewDate();
 				setAlarm();
 			}

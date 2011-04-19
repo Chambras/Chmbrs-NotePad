@@ -18,6 +18,8 @@
 package com.chmbrs.apps.notepad;
 
 
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
+
 import android.app.Activity;
 import android.content.ContentValues;
 import android.database.Cursor;
@@ -41,12 +43,20 @@ public class NotePadTitleEditor extends Activity
 	private EditText titleEdit;
 	private Cursor titleCursor;
 	private Uri titleUri;
+	
+	private GoogleAnalyticsTracker tracker;
+	private NotePadApplication app;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.notetitle);
+		app = ((NotePadApplication) NotePadTitleEditor.this.getApplication());
+		if (tracker == null)
+		{
+	        tracker = app.getTracker();			
+		}
 		
 		titleUri = getIntent().getData();
 		titleCursor = managedQuery(titleUri, PROJECTION, null, null, null);
@@ -59,6 +69,11 @@ public class NotePadTitleEditor extends Activity
 			@Override
 			public void onClick(View v) 
 			{
+				tracker.trackEvent(
+		                "Edit Note Title",
+		                "Button",
+		                "Save Note Title",
+		                 0);
 				finish();
 			}
 		});

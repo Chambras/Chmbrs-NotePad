@@ -28,8 +28,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.IBinder;
-import android.util.Log;
 import android.widget.RemoteViews;
+
+import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 public class NotePadWidgetProvider extends AppWidgetProvider
 {
@@ -38,7 +39,35 @@ public class NotePadWidgetProvider extends AppWidgetProvider
 	private static final String MOVE_NEXT = "com.chmbrs.apps.notepad.notes.action.MOVE_NEXT_NOTE";
 	private static final String MOVE_BACK = "com.chmbrs.apps.notepad.notes.action.MOVE_PREV_NOTE";
 	private static final String REFRESH_NOTES = "com.chmbrs.apps.notepad.notes.action.REFRESH_NOTES";
+	private GoogleAnalyticsTracker tracker;
+	private NotePadApplication app;
 	
+	@Override
+	public void onEnabled(Context context) 
+	{
+		super.onEnabled(context);
+		app = (NotePadApplication)context.getApplicationContext();
+		tracker = app.getTracker();
+		tracker.trackEvent(
+                "Home Screen", 
+                "Widget",
+                "Create NotePad Widget",
+                 0);
+	}
+
+	@Override
+	public void onDeleted(Context context, int[] appWidgetIds) 
+	{
+		super.onDeleted(context, appWidgetIds);
+		app = (NotePadApplication)context.getApplicationContext();
+		tracker = app.getTracker();
+		tracker.trackEvent(
+                "Home Screen", 
+                "Widget",
+                "Remove NotePad Widget",
+                 0);
+	}
+
 	@Override
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) 
 	{
