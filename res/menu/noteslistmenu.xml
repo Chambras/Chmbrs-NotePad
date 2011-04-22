@@ -32,8 +32,8 @@
     	android:id="@+id/itemCategories" 
     	android:title="@string/categoriesMenu" 
     	android:icon="@android:drawable/ic_menu_agenda"
-    	android:enabled="false"
-    	android:visible="false"
+    	android:enabled="true"
+    	android:visible="true"
     />
     <item 
     	android:id="@+id/itemSettings" 

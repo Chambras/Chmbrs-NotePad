@@ -22,13 +22,14 @@ import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-public class NotePadApplication extends Application
+public class NotePadApplication extends Application implements OnSharedPreferenceChangeListener
 {
 	private static final String TAG ="NotePadApplication";
 	private SharedPreferences preferences;
@@ -59,6 +60,7 @@ public class NotePadApplication extends Application
 	    tracker = GoogleAnalyticsTracker.getInstance();
 	    tracker.start(GOOGLENALYTICSACCOUNT, this);
 		preferences = PreferenceManager.getDefaultSharedPreferences(this);
+		preferences.registerOnSharedPreferenceChangeListener(this);
 		try 
 		{
 			currentApplicationVersionName = this.getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName;
@@ -189,5 +191,11 @@ public class NotePadApplication extends Application
 	{
 		ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
 		return cm.getActiveNetworkInfo().isConnectedOrConnecting();
+	}
+
+	@Override
+	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) 
+	{
+		Log.i(TAG, "sync is " + key);
 	}
 }

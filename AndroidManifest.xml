@@ -35,6 +35,13 @@
 	<uses-permission android:name="android.permission.READ_SYNC_STATS" />
     <uses-permission android:name="android.permission.READ_SYNC_SETTINGS" />
     <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    
+    <!-- Application specific permissions -->
+    <uses-permission android:name="com.chmbrs.apps.notepad.permission.C2D_MESSAGE"/>
+    <permission android:name="com.chmbrs.apps.notepad.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+    
     <supports-screens android:anyDensity="true" android:largeScreens="true" android:smallScreens="true" android:normalScreens="true"/>
 
     <application android:icon="@drawable/icon" android:label="@string/appName" android:debuggable="true" android:name="NotePadApplication" android:allowClearUserData="true">
@@ -133,7 +140,9 @@
         	android:theme="@android:style/Theme.Light" 
         	android:label="@string/notePadChangeLogTitle">
         </activity>
-        
+
+<!-- in order to add the app to google acccount sync options  -->
+     
 		<service android:name="NotePadSyncService" android:exported="true">
 			<intent-filter>
 				<action android:name="android.content.SyncAdapter" />
@@ -162,6 +171,20 @@
         	<intent-filter>
         		<action android:name="com.chmbrs.apps.notepad.notes.action.NOTE_REMINDER" />
         		<data android:mimeType="vnd.android.cursor.item/vnd.chmbrs.note" />
+        	</intent-filter>
+        </receiver>
+        
+        <!-- C2DM Receiver -->
+        <service android:name="C2DMNotePadReceiver" />
+        
+        <receiver android:name="com.chmbrs.apps.c2dm.NotePadC2dmBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND">
+        	<intent-filter>
+        		<action android:name="com.google.android.c2dm.intent.RECEIVE"/>
+        		<category android:name="com.chmbrs.apps.notepad"/>
+        	</intent-filter>
+        	<intent-filter>
+        		<action android:name="com.google.android.c2dm.intent.REGISTRATION"/>
+        		<category android:name="com.chmbrs.apps.notepad"/>
         	</intent-filter>
         </receiver>
     </application>

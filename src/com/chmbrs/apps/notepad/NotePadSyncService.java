@@ -20,6 +20,7 @@ package com.chmbrs.apps.notepad;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.util.Log;
 
 public class NotePadSyncService extends Service
 {
@@ -31,12 +32,21 @@ public class NotePadSyncService extends Service
 		if (noteSyncAdapter == null )
 		{
 			noteSyncAdapter = new SyncAdapter (getApplicationContext(), false);
+			Log.i("CHAMBRAS","starting sync service");
 		}
 	}
 
 	@Override
 	public IBinder onBind(Intent intent) 
 	{
+		Log.i("CHAMBRAS","stop adapter");
 		return noteSyncAdapter.getSyncAdapterBinder();
+	}
+
+	@Override
+	public void onDestroy() 
+	{
+		Log.i("CHAMBRAS","stop adapter for ever...");
+		super.onDestroy();
 	}
 }
