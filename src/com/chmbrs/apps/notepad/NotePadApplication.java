@@ -47,6 +47,8 @@ public class NotePadApplication extends Application implements OnSharedPreferenc
 	private int textColor;
 	private int lineColor;
 	
+	private boolean sortChanged = false;
+	
 	private String currentApplicationVersionName;
 	private static final String GOOGLENALYTICSACCOUNT = "UA-20712505-2";
 	private GoogleAnalyticsTracker tracker;
@@ -197,5 +199,19 @@ public class NotePadApplication extends Application implements OnSharedPreferenc
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) 
 	{
 		Log.i(TAG, "sync is " + key);
+		if(key.equals("listPreferenceSortType"))
+		{
+			setSortChanged(true);
+		}
+	}
+	
+	public boolean sortHasChanged()
+	{
+		return sortChanged;
+	}
+	
+	public void setSortChanged(boolean sortChanged)
+	{
+		this.sortChanged = sortChanged; 
 	}
 }

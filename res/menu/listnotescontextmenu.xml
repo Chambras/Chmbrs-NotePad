@@ -26,6 +26,10 @@
     	android:id="@+id/contextItemDeleteNote" 
     	android:title="@string/contentextMenuDeleteNote"
     />
+    <item
+    	android:id="@+id/contextItemEditTitle"
+    	android:title="@string/contentextMenuEditNoteTitle"
+    />
     <item 
     	android:id="@+id/contextItemShareNote" 
     	android:title="@string/contentextMenuShareNote"

@@ -66,6 +66,8 @@ public class NoteList extends ListActivity
     /** The index of the title column */
     private static final int COLUMN_INDEX_TITLE = 1;
     
+    private final static String EDIT_TITLE = "com.chmbrs.apps.notepad.notes.action.EDIT_TITLE";
+    
     private GoogleAnalyticsTracker tracker;
     
     protected AccountManager  accountManager;
@@ -115,6 +117,7 @@ public class NoteList extends ListActivity
 			setTitle(getString(R.string.searchResultsTitle) + " " + query);
         	Log.i(TAG, "searching... " + query);
         	showResults(query);
+        	tracker.trackPageView("/Search Results");
         }
 		else if(Intent.ACTION_MAIN.equals(intent.getAction()))
 		{   
@@ -128,6 +131,7 @@ public class NoteList extends ListActivity
 	        setListAdapter(adapter);
 	        //getListView().setFastScrollEnabled(true);
 	        Log.i(TAG, "loading notes.... " + cursor.getCount());
+	        tracker.trackPageView("/NoteList Open");
 		}
 		/*accountManager = AccountManager.get(this);
         Account[] accounts = accountManager.getAccountsByType("com.google");
@@ -203,6 +207,15 @@ public class NoteList extends ListActivity
 		                "Note List",
 		                "Context Menu",
 		                "Delete Note",
+		                 0);
+				break;
+			case R.id.contextItemEditTitle:
+				startActivity(new Intent(EDIT_TITLE, noteUri));
+				tracker.trackPageView("/NotePad Title Editor");
+				tracker.trackEvent(
+		                "Note List",
+		                "Context Menu",
+		                "Edit Note Title",
 		                 0);
 				break;
 			case R.id.contextItemShareNote:
@@ -455,9 +468,15 @@ public class NoteList extends ListActivity
 	protected void onResume() 
 	{
 		super.onResume();
+		if ( app.sortHasChanged())
+		{
+			refreshNotes();
+			app.setSortChanged(false);
+		}
+		tracker.trackPageView("/NoteList");
 	}
 
-/*	private void refreshNotes() 
+	private void refreshNotes() 
 	{
 		Cursor cursor = managedQuery(getIntent().getData(), PROJECTION, null, null, app.getSortType());
         
@@ -465,7 +484,7 @@ public class NoteList extends ListActivity
         int [] to = new int[] {R.id.text1, R.id.text2};
         SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.noterow, cursor, from, to);
         setListAdapter(adapter);
-	}*/
+	}
 
 	protected void postNoteChanges() 
 	{

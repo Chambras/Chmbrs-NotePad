@@ -73,10 +73,13 @@ public class NotePadProvider extends ContentProvider
         	Log.w(TAG, "Creating Database " + db);
             db.execSQL("CREATE TABLE " + NOTES_TABLE_NAME + " ("
                     + Notes._ID + " INTEGER PRIMARY KEY,"
+                    + Notes.SERVER_ID + " TEXT, "
+                    + Notes.USER_ACCOUNT + " TEXT,"
                     + Notes.TITLE + " TEXT,"
-                    + Notes.NOTE + " TEXT,"
-                    + Notes.CREATED_DATE + " INTEGER,"
-                    + Notes.MODIFIED_DATE + " INTEGER"
+                    + Notes.NOTE + " TEXT NOT NULL DEFAULT '',"
+                    + Notes.CREATED_DATE + " INTEGER NOT NULL DEFAULT 0,"
+                    + Notes.MODIFIED_DATE + " INTEGER NOT NULL DEFAULT 0,"
+                    + Notes.PENDING_DELETE + " BOOLEAN NOT NULL DEFAULT 0"
                     + ");");
         }
 

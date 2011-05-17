@@ -87,6 +87,7 @@ public class NotePadTitleEditor extends Activity
 		{
 			ContentValues values = new ContentValues();
 			values.put(Notes.TITLE, titleEdit.getText().toString());
+			values.put(Notes.MODIFIED_DATE, System.currentTimeMillis());
 			getContentResolver().update(titleUri, values, null, null);
 		}
 	}

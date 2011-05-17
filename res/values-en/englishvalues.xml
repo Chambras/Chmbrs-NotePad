@@ -18,9 +18,9 @@
 
 <resources>
 
-	<string name="appVersionName">Chmbrs Note Pad 1.0</string>
+	<string name="appVersionName">1.0</string>
 	<string name="appName">Chmbrs Note Pad</string>
-	<string name="appEmail">marcech.am@gmail.com</string>
+	<string name="appEmail">chmbrsnotepad@gmail.com</string>
 	<string name="appWebPage">http://marcelozambranav.blogspot.com/</string>
 	<string name="noNotes">No notes in this account.</string>
 	
@@ -61,6 +61,7 @@
 <!--	context menu items-->
 	<string name="contextMenuOpenNote">Open Note</string>
 	<string name="contentextMenuDeleteNote">Delete Note</string>
+	<string name="contentextMenuEditNoteTitle">Edit Title</string>
 	<string name="contentextMenuShareNote">Share Note</string>
 	<string name="contentMenuOpenAppNote">Open Related App</string>
 	<string name="contentMenupinNoteHomeScreen">PIN Note in Home Screen</string>
