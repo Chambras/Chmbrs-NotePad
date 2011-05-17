@@ -1,5 +1,5 @@
 ==============================================
-Welcome to Chmbrs NotePad
+Welcome to Chambras NotePad
 ============================================== 
 Thank you for taking the time to download and install Chmbrs Note Pad.
 
