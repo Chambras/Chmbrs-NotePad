@@ -85,7 +85,7 @@ public class NoteList extends ListActivity
 		}
 
         Intent intent = getIntent();
-        Log.i(TAG, "starting the main activity " + intent.getAction());
+        //Log.i(TAG, "starting the main activity " + intent.getAction());
         handleIntent(intent);
     }
 
@@ -93,7 +93,7 @@ public class NoteList extends ListActivity
 	protected void onNewIntent(Intent intent) 
 	{
 		setIntent(intent);
-		Log.i(TAG, "NEW INTENT");
+		//Log.i(TAG, "NEW INTENT");
 		handleIntent(intent);
 	}
 
@@ -102,21 +102,21 @@ public class NoteList extends ListActivity
 		if (intent.getData() == null) 
         {
             intent.setData(Notes.CONTENT_URI);
-            Log.i(TAG, "no data in the intent...");
+            //Log.i(TAG, "no data in the intent...");
         }
 		
 		if(Intent.ACTION_SEARCH.equals(intent.getAction()))
         {
 			String query = intent.getStringExtra(SearchManager.QUERY);
 			setTitle(getString(R.string.searchResultsTitle) + " " + query);
-        	Log.i(TAG, "searching... " + query);
+        	//Log.i(TAG, "searching... " + query);
         	showResults(query);
         	tracker.trackPageView("/Search Results");
         }
 		else if(Intent.ACTION_MAIN.equals(intent.getAction()))
 		{   
 	        getListView().setOnCreateContextMenuListener(this);
-	        Log.i(TAG, "starting the app " + getIntent().getData());
+	        //Log.i(TAG, "starting the app " + getIntent().getData());
 	        
 	        Cursor cursor = managedQuery(getIntent().getData(), PROJECTION, null, null, null);
 	        String [] from = new String[] {Notes.TITLE, Notes.NOTE}; 
@@ -124,14 +124,14 @@ public class NoteList extends ListActivity
 	        SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.noterow, cursor, from, to);
 	        setListAdapter(adapter);
 	        //getListView().setFastScrollEnabled(true);
-	        Log.i(TAG, "loading notes.... " + cursor.getCount());
+	        //Log.i(TAG, "loading notes.... " + cursor.getCount());
 	        tracker.trackPageView("/NoteList Open");
 		}
 	}
 
 	private void showResults(String query) 
 	{
-		Log.i(TAG, "displaing results for: " + query );
+		//Log.i(TAG, "displaing results for: " + query );
 		Cursor searchCursor = managedQuery(Notes.CONTENT_URI, PROJECTION, "note like '%"+query+"%' or title like '%" +query+"%'", null, null);
 		if (searchCursor != null)
 		{
@@ -280,10 +280,10 @@ public class NoteList extends ListActivity
 		{ 
 			// Something else is wrong. It may be one of many other states, but all we need 
 			//  to know is we can neither read nor write 
-			Log.i(TAG,"State="+state+" Not good"); 
+			//Log.i(TAG,"State="+state+" Not good"); 
 			mExternalStorageAvailable = mExternalStorageWriteable = false; 
 		} 
-		Log.i(TAG,"Available="+mExternalStorageAvailable + " Writeable="+mExternalStorageWriteable+" State "+state); 
+		//Log.i(TAG,"Available="+mExternalStorageAvailable + " Writeable="+mExternalStorageWriteable+" State "+state); 
 		return (mExternalStorageAvailable && mExternalStorageWriteable); 
 	}
 	
@@ -334,7 +334,7 @@ public class NoteList extends ListActivity
 		else
 		{
 			Toast.makeText(this, R.string.noSDCard, Toast.LENGTH_SHORT).show();
-			Log.i(TAG, "SD card not mounted");
+			//Log.i(TAG, "SD card not mounted");
 		}
 	}
 
@@ -358,7 +358,7 @@ public class NoteList extends ListActivity
 	
 	private void setupShortCut(long id, String shortcutName)
 	{
-		Log.i(TAG,"creando el shorcut...");
+		//Log.i(TAG,"creando el shorcut...");
 		Uri noteUri = ContentUris.withAppendedId(getIntent().getData(), id);
 		Intent shortcutIntent = new Intent(Intent.ACTION_EDIT, noteUri);
 		
@@ -399,7 +399,7 @@ public class NoteList extends ListActivity
 		                "Search",
 		                 0);
 				onSearchRequested();
-				Log.i(TAG, "search notes: ");
+				//Log.i(TAG, "search notes: ");
 				break;
 //			case R.id.itemCategories:
 //				break;
@@ -420,7 +420,7 @@ public class NoteList extends ListActivity
 	protected void onListItemClick(ListView l, View v, int position, long id) 
 	{
 		Uri uri = ContentUris.withAppendedId(getIntent().getData(), id);
-		Log.i(TAG, "editing note " + id);
+		//Log.i(TAG, "editing note " + id);
 		//Log.i(TAG, "editing note " + uri + " with action " + action);
 		try {
 			tracker.trackPageView("/NotePad Editor");
@@ -430,7 +430,7 @@ public class NoteList extends ListActivity
 	                "Open Note",
 	                 0);
 		} catch (Exception e) {
-			Log.i(TAG, e.toString());
+			//Log.i(TAG, e.toString());
 		}
 
 		startActivity(new Intent(Intent.ACTION_EDIT, uri));
@@ -460,14 +460,14 @@ public class NoteList extends ListActivity
 
 	protected void postNoteChanges() 
 	{
-		Log.i(TAG, "new note has been created...");
+		//Log.i(TAG, "new note has been created...");
 	}
 
 	@Override
 	protected void onPause() 
 	{
 		super.onPause();
-		Log.i(TAG, "pausing the app");
+		//Log.i(TAG, "pausing the app");
 	}
 
 	//@Override

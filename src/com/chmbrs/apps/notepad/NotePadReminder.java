@@ -216,7 +216,7 @@ public class NotePadReminder extends Activity
 		}
 		String newVale = Integer.toString(actualValue);
 		value.setText(newVale);
-		Log.i(TAG, "new value: " + newVale);
+		//Log.i(TAG, "new value: " + newVale);
 	}
 
 	protected void addTime(EditText value) 
@@ -224,7 +224,7 @@ public class NotePadReminder extends Activity
 		int actualValue = Integer.parseInt(value.getText().toString()) + 1;
 		String newVale = Integer.toString(actualValue);
 		value.setText(newVale);
-		Log.i(TAG, "new value: " + newVale);
+		//Log.i(TAG, "new value: " + newVale);
 	}
 	
 	private void setAlarmNewDate()
@@ -261,7 +261,7 @@ public class NotePadReminder extends Activity
 		String notificationConfimation = triggerDate.toLocaleString();
 		String reminderMessage = getText(R.string.notificationConfirmation) + " " + notificationConfimation;
 		Toast.makeText(this, reminderMessage, Toast.LENGTH_LONG).show();
-		Log.i(TAG, reminderMessage);
+		//Log.i(TAG, reminderMessage);
 		finish();
 	}
 }

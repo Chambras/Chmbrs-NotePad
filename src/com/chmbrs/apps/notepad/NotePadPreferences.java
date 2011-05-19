@@ -124,8 +124,8 @@ public class NotePadPreferences extends PreferenceActivity
 		};
 		
 		final String messageBody = "\n --- \n" +device + "\n" + brand + "\n" + model +"\n"+  OSVersion + "\n" + APILevel + "\n" + buildNumber;
-		Log.i(TAG, appVersion);
-		Log.i(TAG, messageBody);
+		//Log.i(TAG, appVersion);
+		//Log.i(TAG, messageBody);
 		
 		final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND);
 		emailIntent.setType("plain/text");

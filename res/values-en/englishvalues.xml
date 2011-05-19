@@ -18,8 +18,8 @@
 
 <resources>
 
-	<string name="appVersionName">1.0</string>
-	<string name="appName">Chmbrs Note Pad</string>
+	<string name="appVersionName">0.1 Beta</string>
+	<string name="appName">Chmbrs NotePad</string>
 	<string name="appEmail">chmbrsnotepad@gmail.com</string>
 	<string name="appWebPage">http://marcelozambranav.blogspot.com/</string>
 	<string name="noNotes">No notes in this account.</string>
@@ -46,7 +46,7 @@
 	<string name="createNewNoteTitle">Create New Note</string>	
 	<string name="editNoteTitle">Edit Note</string>
 	<string name="searchResultsTitle">Results for:</string>
-	<string name="notePadPreferencesTitle">Chmbrs Note Pad Preferences</string>
+	<string name="notePadPreferencesTitle">Chmbrs NotePad Preferences</string>
 	<string name="notePadReminderTitle">Set Reminder Type</string>
 	<string name="notePadCalendarTitle">Send Note to Calendar</string>
 	<string name="notePadAboutMeTitle">About Me</string>
@@ -79,7 +79,7 @@
 	<string name="searchSettingsDescription">Titles and Text in your Notes</string>
 
 <!--live folders-->
-	<string name="liveFolderLabel">Chmbrs Note Pad</string>
+	<string name="liveFolderLabel">Chmbrs NotePad</string>
 	<string name="defaultLiveFolderName">All My Notes</string>
 	
 <!--	widget-->
@@ -87,7 +87,7 @@
 	<string name="widgetAddNote">Create New Note</string>
 	
 <!--	notifications-->
-	<string name="notificationTitle">Note Pad Reminder</string>
+	<string name="notificationTitle">NotePad Reminder</string>
 	<string name="notificationConfirmation">Reminder set to:</string>
 
 <!--	reminders menu-->
@@ -155,14 +155,16 @@
 	</string>
 	<string name="currentVersionTitle">Current Version:</string>
 	<string name="grettingsTitle">Thanks to:</string>
-	<string name="grettingsList">Oli y mi chamaco :)</string>
+	<string name="grettingsList">* Jared for helping me with the application icon.</string>
+	<string name="dedicationTitle">To:</string>
+	<string name="dedicationList"> Oli and mi Chamaco :) you give me the strength I need to continue :)</string>
 	
 	<string name="buildTitle">Build Notes:</string>
 
 
 <!-- VERSIONS CHANGE LOG INFORMATION -->	
 <!-- First Version -->
-	<string name="version1">Version 1.0:</string>
+	<string name="version1">Version 0.1 Beta:</string>
 	<string name="buildNotesVersion1">
 		* Basic features like, new, edit, update, delete Notes.\n
 		* Set reminders in notes.\n

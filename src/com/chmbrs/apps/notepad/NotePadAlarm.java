@@ -39,7 +39,7 @@ public class NotePadAlarm extends BroadcastReceiver
 	public void onReceive(Context context, Intent intent) 
 	{
 		app = (NotePadApplication)context.getApplicationContext();
-		Log.i(TAG, "alarm notification " +intent.getData() );
+		//Log.i(TAG, "alarm notification " +intent.getData() );
 		
 		String notificationService = context.NOTIFICATION_SERVICE;
 		mNotificationManager= (NotificationManager) context.getSystemService(notificationService);

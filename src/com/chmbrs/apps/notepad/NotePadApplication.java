@@ -58,7 +58,7 @@ public class NotePadApplication extends Application implements OnSharedPreferenc
 	public void onCreate() 
 	{
 		super.onCreate();
-		Log.i(TAG, "creating Application object");
+		//Log.i(TAG, "creating Application object");
 	    tracker = GoogleAnalyticsTracker.getInstance();
 	    tracker.start(GOOGLENALYTICSACCOUNT, this);
 		preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -182,7 +182,7 @@ public class NotePadApplication extends Application implements OnSharedPreferenc
 	
 	public void dispatchTracker()
 	{
-		Log.i(TAG,"dispatching info...");
+		//Log.i(TAG,"dispatching info...");
 		if(isOnline())
 		{
 			tracker.dispatch();
@@ -198,7 +198,7 @@ public class NotePadApplication extends Application implements OnSharedPreferenc
 	@Override
 	public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) 
 	{
-		Log.i(TAG, "sync is " + key);
+		//Log.i(TAG, "sync is " + key);
 		if(key.equals("listPreferenceSortType"))
 		{
 			setSortChanged(true);

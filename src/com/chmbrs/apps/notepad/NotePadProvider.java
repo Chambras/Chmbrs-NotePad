@@ -135,7 +135,7 @@ public class NotePadProvider extends ContentProvider
 	@Override
 	public Uri insert(Uri uri, ContentValues initialValues) 
 	{
-		Log.i(TAG," insert " + uri);
+		//Log.i(TAG," insert " + uri);
 		// Validate the requested uri
         if (sUriMatcher.match(uri) != NOTES) {
             throw new IllegalArgumentException("Unknown URI " + uri);

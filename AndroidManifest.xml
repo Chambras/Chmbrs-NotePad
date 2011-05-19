@@ -32,11 +32,13 @@
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/> 
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     
-    <!-- Application specific permissions -->
+    <supports-screens android:anyDensity="true" android:largeScreens="true" android:smallScreens="true" android:normalScreens="true" android:resizeable="true"/>
+    <!-- Hardware features -->
+    <uses-feature android:name="android.hardware.faketouch" android:required="false"/>
+    <uses-feature android:name="android.hardware.touchscreen" android:required="false"/>
+    <uses-feature android:name="android.hardware.telephony" android:required="false"/>
     
-    <supports-screens android:anyDensity="true" android:largeScreens="true" android:smallScreens="true" android:normalScreens="true"/>
-
-    <application android:icon="@drawable/icon" android:label="@string/appName" android:debuggable="true" android:name="NotePadApplication" android:allowClearUserData="true">
+    <application android:icon="@drawable/icon" android:label="@string/appName" android:name="NotePadApplication" android:allowClearUserData="true" android:debuggable="false">
     	<provider android:name="NotePadProvider" android:authorities="com.chmbrs.apps.notepad" />
         <activity android:name="NoteList"
                   android:label="@string/appName">

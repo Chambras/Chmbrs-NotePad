@@ -8,7 +8,7 @@ for fun and to learn Android.
 It has basically everything they suggest to have like Home Screen Widget, Live Folders,
 Pin to Home, Notifications, Basic Preferences Settings. I tried to follow all their good practices in UI and code.
 
-Version 1.0 (04/01/2011):	
+Version 0.1 Beta (05/19/2011):	
 	* Basic features like, new, edit, update, delete Notes.
 	* Set reminders in notes.
 	* Add note to Google Calendar.

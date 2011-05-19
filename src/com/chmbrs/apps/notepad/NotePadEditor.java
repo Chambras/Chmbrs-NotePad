@@ -89,7 +89,7 @@ public class NotePadEditor extends Activity
 		{
 			editorState = STATE_EDIT;
 			mUri = intent.getData();
-			Log.i(TAG, "editando una nota " + intent.getAction());
+			//Log.i(TAG, "editando una nota " + intent.getAction());
 		}
 		else if(Intent.ACTION_INSERT.equals(action))
 		{	
@@ -105,7 +105,7 @@ public class NotePadEditor extends Activity
 				finish();
 				return;
 			}
-			Log.i(TAG, "suponemos q la nota fue creada tonces seguimos");
+			//Log.i(TAG, "suponemos q la nota fue creada tonces seguimos");
 			setResult(RESULT_OK, (new Intent()).setAction(mUri.toString()));
 			
 		}
@@ -137,7 +137,7 @@ public class NotePadEditor extends Activity
     protected void onSaveInstanceState(Bundle outState) {
         // Save away the original text, so we still have it if the activity
         // needs to be killed while paused.
-    	Log.i(TAG, "saving original data");
+    	//Log.i(TAG, "saving original data");
         outState.putString(ORIGINAL_CONTENT, noteOriginalContent);
     }
 	
@@ -157,7 +157,7 @@ public class NotePadEditor extends Activity
 			}
 			String note = mCursor.getString(COLUMN_INDEX_NOTE);
 			noteText.setTextKeepState(note);
-			Log.i(TAG, "getting the note");
+			//Log.i(TAG, "getting the note");
 			
 			if(noteOriginalContent == null)
 			{
@@ -203,12 +203,12 @@ public class NotePadEditor extends Activity
 					{
 						//String title = text.replace("\n", " ").substring(0, Math.min(30, length));
 					}*/
-					Log.i(TAG,"editando el titulo " + title);				
+					//Log.i(TAG,"editando el titulo " + title);				
 					values.put(Notes.TITLE, title);
 				}
 				values.put(Notes.NOTE, text);
 				getContentResolver().update(mUri, values, null, null);
-				Log.i(TAG,"Guardadno la nota...");
+				//Log.i(TAG,"Guardadno la nota...");
 
 				Intent widgetUpdateIntent = new Intent(REFRESH_NOTES);
 				this.startService(widgetUpdateIntent );
@@ -315,11 +315,11 @@ public class NotePadEditor extends Activity
                 ContentValues values = new ContentValues();
                 values.put(Notes.NOTE, noteOriginalContent);
                 getContentResolver().update(mUri, values, null, null);
-                Log.i(TAG, "descartando los cambios en la nota " + noteOriginalContent);
+                //Log.i(TAG, "descartando los cambios en la nota " + noteOriginalContent);
             } 
             else if (editorState == STATE_INSERT) 
             {
-				Log.i(TAG, "descartando la nota recien creada...");
+				//Log.i(TAG, "descartando la nota recien creada...");
                 // We inserted an empty note, make sure to delete it
 				deleteNote();
 	        }
@@ -337,7 +337,7 @@ public class NotePadEditor extends Activity
 		{
 			mCursor.close();
 	        mCursor = null;
-	        Log.i(TAG, "deleting note " + mUri);
+	        //Log.i(TAG, "deleting note " + mUri);
 	        getContentResolver().delete(mUri, null, null);
 	        noteText.setText("");
 	    }

@@ -82,10 +82,10 @@ public class ExportNotes extends Activity
 		} 
 		else 
 		{ 
-			Log.i(TAG,"State="+state+" Not good"); 
+			//Log.i(TAG,"State="+state+" Not good"); 
 			mExternalStorageAvailable = mExternalStorageWriteable = false; 
 		} 
-		Log.i(TAG,"Available="+mExternalStorageAvailable + " Writeable="+mExternalStorageWriteable+" State "+state); 
+		//Log.i(TAG,"Available="+mExternalStorageAvailable + " Writeable="+mExternalStorageWriteable+" State "+state); 
 		return (mExternalStorageAvailable && mExternalStorageWriteable); 
 	}
 	
@@ -94,7 +94,7 @@ public class ExportNotes extends Activity
 		Cursor cursor = managedQuery(Notes.CONTENT_URI, PROJECTION, null, null, null);
 		final int title = cursor.getColumnIndex(Notes.TITLE);
 		final int note = cursor.getColumnIndex(Notes.NOTE);
-		Log.i(TAG, "notes to be exported: " + cursor.getCount());
+		//Log.i(TAG, "notes to be exported: " + cursor.getCount());
 		while(cursor.moveToNext())
 		{
 			try 
