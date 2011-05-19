@@ -69,14 +69,13 @@ public final class R {
         public static final int editTextTitle=0x7f0a0016;
         public static final int emptyNotes=0x7f0a000d;
         public static final int itemAddNote=0x7f0a003e;
-        public static final int itemCategories=0x7f0a0040;
         public static final int itemDeleteNote=0x7f0a0032;
         public static final int itemDiscardNote=0x7f0a003d;
         public static final int itemDiscardNoteChanges=0x7f0a0034;
         public static final int itemEditNoteTitle=0x7f0a0031;
         public static final int itemSearch=0x7f0a003f;
         public static final int itemSetReminder=0x7f0a0035;
-        public static final int itemSettings=0x7f0a0041;
+        public static final int itemSettings=0x7f0a0040;
         public static final int itemShareNote=0x7f0a0033;
         public static final int layout=0x7f0a002e;
         public static final int linearLayoutDays=0x7f0a0027;
@@ -269,6 +268,5 @@ public final class R {
         public static final int notepadpreferences=0x7f040000;
         public static final int notepadwidgetinfo=0x7f040001;
         public static final int searchable=0x7f040002;
-        public static final int syncadapter=0x7f040003;
     }
 }

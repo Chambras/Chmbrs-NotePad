@@ -24,14 +24,10 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.chmbrs.apps.c2dm.C2DMessaging;
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
-import android.accounts.Account;
-import android.accounts.AccountManager;
 import android.app.ListActivity;
 import android.app.SearchManager;
-import android.content.ContentResolver;
 import android.content.ContentUris;
 import android.content.Intent;
 import android.database.Cursor;
@@ -69,8 +65,6 @@ public class NoteList extends ListActivity
     private final static String EDIT_TITLE = "com.chmbrs.apps.notepad.notes.action.EDIT_TITLE";
     
     private GoogleAnalyticsTracker tracker;
-    
-    protected AccountManager  accountManager;
     
     private static final String exportFolderName = "chmbrs_exported_notes";
     
@@ -133,9 +127,6 @@ public class NoteList extends ListActivity
 	        Log.i(TAG, "loading notes.... " + cursor.getCount());
 	        tracker.trackPageView("/NoteList Open");
 		}
-		/*accountManager = AccountManager.get(this);
-        Account[] accounts = accountManager.getAccountsByType("com.google");
-		ContentResolver.setIsSyncable(accounts[0], "com.chmbrs.apps.notepad", 1);*/
 	}
 
 	private void showResults(String query) 
@@ -410,10 +401,8 @@ public class NoteList extends ListActivity
 				onSearchRequested();
 				Log.i(TAG, "search notes: ");
 				break;
-			case R.id.itemCategories:
-				//testAccounts();
-				testC2DM();
-				break;
+//			case R.id.itemCategories:
+//				break;
 			case R.id.itemSettings:
 				tracker.trackPageView("/Settings");
 				tracker.trackEvent(
@@ -425,23 +414,6 @@ public class NoteList extends ListActivity
 				break;
 		}
 		return true;
-	}
-
-	private void testC2DM() 
-	{
-		C2DMessaging.register(this, "chmbrsnotepad@gmail.com");
-		
-	}
-
-	private void testAccounts() 
-	{
-
-		AccountManager am = AccountManager.get(this);//AccountManager am = AccountManager.get(context);
-        Account[] accounts = am.getAccountsByType("com.google");
-		Log.i(TAG, "is Master Account Sync:" + ContentResolver.getMasterSyncAutomatically());
-        Log.i(TAG, "number of accounts: " + accounts.length);
-        Log.i(TAG, "isSyncable: " + ContentResolver.getIsSyncable(accounts[0], Notes.PROVIDER_NAME));
-        Log.i(TAG, "automatic: " + ContentResolver.getSyncAutomatically(accounts[0], Notes.PROVIDER_NAME));
 	}
 
 	@Override
