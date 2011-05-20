@@ -79,7 +79,7 @@ public class NotePadApplication extends Application implements OnSharedPreferenc
 	
 	public float getTextSize()
 	{
-		fontSize = Float.parseFloat(preferences.getString("listPreferenceTextSize", ""));
+		fontSize = Float.parseFloat(preferences.getString("listPreferenceTextSize", "25"));
 		return fontSize;
 	}
 	

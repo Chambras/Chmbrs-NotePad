@@ -18,7 +18,7 @@
 
 <resources>
 
-	<string name="appVersionName">0.1 Beta</string>
+	<string name="appVersionName">0.1.2 Beta</string>
 	<string name="appName">Chmbrs NotePad</string>
 	<string name="appEmail">chmbrsnotepad@gmail.com</string>
 	<string name="appWebPage">http://marcelozambranav.blogspot.com/</string>
