@@ -18,7 +18,7 @@
 
 <resources>
 
-	<string name="appVersionName">0.1.2 Beta</string>
+	<string name="appVersionName">0.1.3 Beta</string>
 	<string name="appName">Chmbrs NotePad</string>
 	<string name="appEmail">chmbrsnotepad@gmail.com</string>
 	<string name="appWebPage">http://marcelozambranav.blogspot.com/</string>
@@ -176,6 +176,7 @@
 		* Share Notes ( SMS, Google Voice SMS, FaceBook, Email, etc).\n
 		* Export Notes to SD Card.
 	</string>
+		
 <!-- Second Version near future-->
 <!--	<string name="version2">Version 2.0:</string>-->
 <!--	<string name="buildNotesVersion2">-->

@@ -31,7 +31,7 @@
 	</TextView>
 	<Button android:id="@+id/buttonWidgetRight" 
 		android:text=">"
-		android:enabled="false"
+		android:enabled="true"
 		android:layout_height="150dip"
 		android:layout_below="@id/textViewWidgetTitle"
 		android:layout_alignParentRight="true" 
@@ -39,7 +39,7 @@
   	</Button>
 	<Button android:id="@+id/buttonWidgetLeft" 
 		android:text="&#60;" 
-		android:enabled="false"
+		android:enabled="true"
 		android:layout_height="wrap_content" 
 		android:layout_width="wrap_content"
 		android:layout_below="@id/textViewWidgetTitle"
@@ -58,7 +58,7 @@
 	</TextView>
 	<TextView android:id="@+id/textViewWidgetNoteContent" 
 		android:clickable="true"
-		android:enabled="false"
+		android:enabled="true"
 		android:layout_height="wrap_content" 
 		android:layout_width="fill_parent"
 		android:layout_below="@id/textViewWidgetNoteTitle"

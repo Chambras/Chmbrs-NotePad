@@ -26,6 +26,8 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Typeface;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Build;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
@@ -70,6 +72,11 @@ public class NotePadApplication extends Application implements OnSharedPreferenc
 		{
 			e.printStackTrace();
 		};
+	}
+	
+	public int getCurrentAPIVersion()
+	{
+		return Integer.parseInt(Build.VERSION.SDK);
 	}
 	
 	public String getCurrentApplicationVersionName()
@@ -191,8 +198,16 @@ public class NotePadApplication extends Application implements OnSharedPreferenc
 	
 	public boolean isOnline()
 	{
-		ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-		return cm.getActiveNetworkInfo().isConnectedOrConnecting();
+		NetworkInfo info = (NetworkInfo) ((ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE)).getActiveNetworkInfo();
+		if (info == null || !info.isConnected()) 
+		{
+			return false;
+		}
+		if (info.isRoaming()) 
+		{
+			return false;
+		}
+		return true;
 	}
 
 	@Override

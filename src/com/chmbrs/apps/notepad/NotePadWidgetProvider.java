@@ -27,7 +27,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.RemoteViews;
 
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
@@ -72,8 +74,8 @@ public class NotePadWidgetProvider extends AppWidgetProvider
 	public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) 
 	{
 		super.onUpdate(context, appWidgetManager, appWidgetIds);
-		//Log.i(TAG, "widget updated");
 		context.startService(new Intent(REFRESH_NOTES));
+		//Log.i(TAG, "widget updated");
 	}
 	
 	public static class NotePadUpdateService extends Service
@@ -122,10 +124,23 @@ public class NotePadWidgetProvider extends AppWidgetProvider
 			RemoteViews updateViews = null;
 			
 			//Log.i(TAG, "total notes: " + cursorNotes.getCount());
+			CharSequence noteTitle = "";
+			CharSequence noteContent = "";
+			long noteID = 0;
+				
+			if(hasNotes)
+			{
+				noteTitle = cursorNotes.getString(cursorNotes.getColumnIndex(Notes.TITLE));
+				noteContent = cursorNotes.getString(cursorNotes.getColumnIndex(Notes.NOTE));
+				noteID = cursorNotes.getLong(cursorNotes.getColumnIndex(Notes._ID));
+			}
+			else
+			{
+				noteTitle = "";
+				noteContent = getString(R.string.noNotes);
+				noteID = 0;
+			}
 			
-			CharSequence noteTitle = cursorNotes.getString(cursorNotes.getColumnIndex(Notes.TITLE));
-			CharSequence noteContent = cursorNotes.getString(cursorNotes.getColumnIndex(Notes.NOTE));
-			long noteID = cursorNotes.getLong(cursorNotes.getColumnIndex(Notes._ID));
 			
 			Uri uri = ContentUris.withAppendedId(Notes.CONTENT_URI, noteID);
 			Intent intentNewNote = new Intent(Intent.ACTION_INSERT, Notes.CONTENT_URI);
@@ -142,30 +157,63 @@ public class NotePadWidgetProvider extends AppWidgetProvider
             
 			updateViews = new RemoteViews(context.getPackageName(), R.layout.notepadwidget);
 			
-			updateViews.setBoolean(R.id.textViewWidgetNoteContent, "setEnabled", hasNotes);
-			if(cursorNotes.getPosition() == (cursorNotes.getCount() - 1))
+			if(Integer.parseInt(Build.VERSION.SDK)<11)
 			{
-				updateViews.setBoolean(R.id.buttonWidgetRight, "setEnabled", false);
+				//Log.i(TAG, "API: menor a honeycomb");
+				//updateViews.setBoolean(R.id.textViewWidgetNoteContent, "setEnabled", hasNotes);
+				if((cursorNotes.getPosition() == (cursorNotes.getCount() - 1)) || !hasNotes)
+				{
+					updateViews.setBoolean(R.id.buttonWidgetRight, "setEnabled", false);
+				}
+				else
+				{
+					updateViews.setBoolean(R.id.buttonWidgetRight, "setEnabled", true);
+				}
+				
+				if(cursorNotes.getPosition() == 0)
+				{
+					updateViews.setBoolean(R.id.buttonWidgetLeft, "setEnabled", false);
+				}
+				else
+				{
+					updateViews.setBoolean(R.id.buttonWidgetLeft, "setEnabled", true);
+				}
 			}
 			else
 			{
-				updateViews.setBoolean(R.id.buttonWidgetRight, "setEnabled", true);
-			}
-			
-			if(cursorNotes.getPosition() == 0)
-			{
-				updateViews.setBoolean(R.id.buttonWidgetLeft, "setEnabled", false);
-			}
-			else
-			{
-				updateViews.setBoolean(R.id.buttonWidgetLeft, "setEnabled", true);
+				//Log.i(TAG, "API: mayor a honeycomb " + cursorNotes.getPosition() + " " + cursorNotes.getCount());
+				//updateViews.setBoolean(R.id.textViewWidgetNoteContent, "setEnabled", hasNotes);
+				if((cursorNotes.getPosition() == (cursorNotes.getCount() - 1)) || !hasNotes) 
+				{
+					updateViews.setViewVisibility (R.id.buttonWidgetRight, 4);
+				}
+				else
+				{
+					updateViews.setViewVisibility (R.id.buttonWidgetRight, 0);
+				}
+				
+				if(cursorNotes.getPosition() == 0)
+				{
+					updateViews.setViewVisibility (R.id.buttonWidgetLeft, 4);
+				}
+				else
+				{
+					updateViews.setViewVisibility (R.id.buttonWidgetLeft, 0);
+				}
 			}
 			
 			updateViews.setTextViewText(R.id.textViewWidgetNoteTitle, noteTitle);
 			updateViews.setTextViewText(R.id.textViewWidgetNoteContent, noteContent);
 			
 			updateViews.setOnClickPendingIntent(R.id.buttonWidgetNewNote, pendingIntentNewNote);
-			updateViews.setOnClickPendingIntent(R.id.textViewWidgetNoteContent, pendingIntentEditNote);
+			if(hasNotes)
+			{
+				updateViews.setOnClickPendingIntent(R.id.textViewWidgetNoteContent, pendingIntentEditNote);
+			}
+			else
+			{
+				updateViews.setOnClickPendingIntent(R.id.textViewWidgetNoteContent, pendingIntentNewNote);
+			}
 			updateViews.setOnClickPendingIntent(R.id.buttonWidgetRight, pendingIntentMoveNextNote);
 			updateViews.setOnClickPendingIntent(R.id.buttonWidgetLeft, pendingIntentMovePrevnote);
 			return updateViews;
