@@ -28,4 +28,5 @@ More online information can be found here:
 
 This is my personal blog I will try to add more help and documentation once the
 application is in the Android Market. 
+
 More new stuff coming soon...
