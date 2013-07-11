@@ -19,6 +19,14 @@ Version 0.1 Beta (05/19/2011):
 	* Share Notes ( SMS, Google Voice SMS, FaceBook, Email, etc).
 	* Export Notes to SD Card.
 	
+Version 0.1.3 Beta (06/04/2011):
+	* Fix a compatibility issue with tablets in the home screen widget.
+	* Fix a bug when home screen widget is created and there are still no notes created.
+
+Version 0.1.4 Beta(06/26/2011)
+	* Fix Home Screen widget update crash.\n
+ 	* Fix a bug when changing device language wouldn't load the string values.
+	
 I will try to keep this project alive and add more things. I have a lot of ideas
 I just need more time. 
 
