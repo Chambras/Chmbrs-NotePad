@@ -21,6 +21,8 @@ package com.chmbrs.apps.notepad;
 import com.google.android.apps.analytics.GoogleAnalyticsTracker;
 
 import android.app.Activity;
+import android.appwidget.AppWidgetManager;
+import android.content.ComponentName;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
@@ -209,9 +211,16 @@ public class NotePadEditor extends Activity
 				values.put(Notes.NOTE, text);
 				getContentResolver().update(mUri, values, null, null);
 				//Log.i(TAG,"Guardadno la nota...");
-
-				Intent widgetUpdateIntent = new Intent(REFRESH_NOTES);
-				this.startService(widgetUpdateIntent );
+				
+				ComponentName widgetName = new ComponentName(this, NotePadWidgetProvider.class);
+				int [] ids = AppWidgetManager.getInstance(this).getAppWidgetIds(widgetName);
+				//Log.i(TAG,"number of widgets: " + ids.length);
+				if (ids.length > 0)
+				{
+					Intent widgetUpdateIntent = new Intent(REFRESH_NOTES);
+					this.startService(widgetUpdateIntent);
+				}
+				
 			}
 		}
 	}

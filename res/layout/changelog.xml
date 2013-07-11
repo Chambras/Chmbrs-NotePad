@@ -21,34 +21,60 @@
   android:layout_height="fill_parent">
 <LinearLayout
   android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
+  android:layout_height="wrap_content"
   android:orientation="vertical">
   
-<!-- Version 2 near future -->
-<!--	<LinearLayout android:id="@+id/linearLayoutVersion2"-->
-<!--		android:layout_width="fill_parent"-->
-<!--		android:layout_height="wrap_content"-->
-<!--		android:orientation="vertical"-->
-<!--		android:paddingLeft="10dip"-->
-<!--		android:paddingRight="10dip"-->
-<!--		android:paddingTop="5dip"-->
-<!--		>-->
-<!--		 <TextView android:id="@+id/textViewVersion2"-->
-<!--		 	android:layout_width="fill_parent"-->
-<!--		 	android:layout_height="wrap_content"-->
-<!--		 	android:text="@string/version2"-->
-<!--		 />-->
-<!--		 <TextView android:id="@+id/textViewBuildTitle"-->
-<!--		 	android:layout_width="fill_parent"-->
-<!--		 	android:layout_height="wrap_content"-->
-<!--		 	android:text="@string/buildTitle"-->
-<!--		 />-->
-<!--		 <TextView android:id="@+id/textViewBuildNotesVersion2"-->
-<!--		 	android:layout_width="fill_parent"-->
-<!--		 	android:layout_height="wrap_content"-->
-<!--		 	android:text="@string/buildNotesVersion2"-->
-<!--		 />-->
-<!--	</LinearLayout>-->
+<!-- Version 3  -->
+	<LinearLayout android:id="@+id/linearLayoutVersion3"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:paddingLeft="10dip"
+		android:paddingRight="10dip"
+		android:paddingTop="5dip"
+		>
+		 <TextView android:id="@+id/textViewVersion3"
+		 	android:layout_width="fill_parent"
+		 	android:layout_height="wrap_content"
+		 	android:text="@string/version3"
+		 />
+		 <TextView android:id="@+id/textViewBuildTitle3"
+		 	android:layout_width="fill_parent"
+		 	android:layout_height="wrap_content"
+		 	android:text="@string/buildTitle"
+		 />
+		 <TextView android:id="@+id/textViewBuildNotesVersion3"
+		 	android:layout_width="fill_parent"
+		 	android:layout_height="wrap_content"
+		 	android:text="@string/buildNotesVersion3"
+		 />
+	</LinearLayout>
+  
+<!-- Version 2  -->
+	<LinearLayout android:id="@+id/linearLayoutVersion2"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:paddingLeft="10dip"
+		android:paddingRight="10dip"
+		android:paddingTop="5dip"
+		>
+		 <TextView android:id="@+id/textViewVersion2"
+		 	android:layout_width="fill_parent"
+		 	android:layout_height="wrap_content"
+		 	android:text="@string/version2"
+		 />
+		 <TextView android:id="@+id/textViewBuildTitle2"
+		 	android:layout_width="fill_parent"
+		 	android:layout_height="wrap_content"
+		 	android:text="@string/buildTitle"
+		 />
+		 <TextView android:id="@+id/textViewBuildNotesVersion2"
+		 	android:layout_width="fill_parent"
+		 	android:layout_height="wrap_content"
+		 	android:text="@string/buildNotesVersion2"
+		 />
+	</LinearLayout>
 
 <!-- Version 1 -->
 	<LinearLayout android:id="@+id/linearLayoutVersion1"

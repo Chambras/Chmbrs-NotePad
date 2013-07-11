@@ -473,6 +473,7 @@ public class NoteList extends ListActivity
 	//@Override
 	protected void onDestroy() 
 	{
+		Log.i(TAG, "closing the app");	
 		super.onDestroy();
 		app.dispatchTracker();
 		app.stopTracker();

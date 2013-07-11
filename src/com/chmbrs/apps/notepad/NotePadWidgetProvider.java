@@ -86,16 +86,53 @@ public class NotePadWidgetProvider extends AppWidgetProvider
 		private static String action ="";
 		
 		@Override
-		public void onStart(Intent intent, int startId) 
+		public int onStartCommand(Intent intent, int flags, int startId) 
 		{
-			//Log.i(TAG, "starting service " + intent.getAction());
+			if( intent != null)
+			{
+				//Log.i(TAG, "starting service " + intent.getAction());
+				action = intent.getAction();
+			}
+			
+			ComponentName widgetName = new ComponentName(this, NotePadWidgetProvider.class);
+			int [] ids = AppWidgetManager.getInstance(this).getAppWidgetIds(widgetName);
+			//Log.i(TAG,"number of widgets: " + ids.length);
+			
+			if (ids.length > 0)
+			{
+				if(cursorNotes == null)
+				{
+					cursorNotes = this.getContentResolver().query(Notes.CONTENT_URI, null, null, null, Notes.DEFAULT_SORT_ORDER);
+					if(cursorNotes.getCount() > 0)
+					{
+						hasNotes = true;
+						cursorNotes.moveToFirst();
+					}
+					else
+					{
+						hasNotes = false;
+					}
+				}
+				RemoteViews updateViews = buildUpdate(this);
+				
+				ComponentName notepadWidget = new ComponentName(this, NotePadWidgetProvider.class);
+				AppWidgetManager manager = AppWidgetManager.getInstance(this);
+				manager.updateAppWidget(notepadWidget, updateViews);
+			}
+			return START_STICKY;
+		}
+
+		/*@Override
+		public void onStart(Intent intent, int startId) //deprecated method
+		{
+			Log.i(TAG, "starting service " + intent.getAction());
 			action = intent.getAction();
 			RemoteViews updateViews = buildUpdate(this);
 			
 			ComponentName notepadWidget = new ComponentName(this, NotePadWidgetProvider.class);
 			AppWidgetManager manager = AppWidgetManager.getInstance(this);
 			manager.updateAppWidget(notepadWidget, updateViews);
-		}
+		}*/
 
 		private RemoteViews buildUpdate(Context context) 
 		{
@@ -111,15 +148,31 @@ public class NotePadWidgetProvider extends AppWidgetProvider
 					hasNotes = false;
 				}
 			}
-			else if(action.equals(MOVE_NEXT))
+			else 
 			{
+				if(cursorNotes == null)
+				{
+					cursorNotes = context.getContentResolver().query(Notes.CONTENT_URI, null, null, null, Notes.DEFAULT_SORT_ORDER);
+					if(cursorNotes.getCount() > 0)
+					{
+						hasNotes = true;
+					}
+					else
+					{
+						hasNotes = false;
+					}
+				}
 				//Log.i(TAG, "count " + cursorNotes.getCount());
-				cursorNotes.moveToNext();
+				if(action.equals(MOVE_NEXT))
+				{
+					cursorNotes.moveToNext();
+				}
+				else if(action.equals(MOVE_BACK))
+				{
+					cursorNotes.moveToPrevious();
+				}
 			}
-			else if(action.equals(MOVE_BACK))
-			{
-				cursorNotes.moveToPrevious();
-			}
+
 
 			RemoteViews updateViews = null;
 			
@@ -156,11 +209,13 @@ public class NotePadWidgetProvider extends AppWidgetProvider
             PendingIntent pendingIntentMovePrevnote = PendingIntent.getService(context, 0, intentMovePrevNote, PendingIntent.FLAG_UPDATE_CURRENT);
             
 			updateViews = new RemoteViews(context.getPackageName(), R.layout.notepadwidget);
+
 			
 			if(Integer.parseInt(Build.VERSION.SDK)<11)
 			{
 				//Log.i(TAG, "API: menor a honeycomb");
 				//updateViews.setBoolean(R.id.textViewWidgetNoteContent, "setEnabled", hasNotes);
+
 				if((cursorNotes.getPosition() == (cursorNotes.getCount() - 1)) || !hasNotes)
 				{
 					updateViews.setBoolean(R.id.buttonWidgetRight, "setEnabled", false);
@@ -182,7 +237,6 @@ public class NotePadWidgetProvider extends AppWidgetProvider
 			else
 			{
 				//Log.i(TAG, "API: mayor a honeycomb " + cursorNotes.getPosition() + " " + cursorNotes.getCount());
-				//updateViews.setBoolean(R.id.textViewWidgetNoteContent, "setEnabled", hasNotes);
 				if((cursorNotes.getPosition() == (cursorNotes.getCount() - 1)) || !hasNotes) 
 				{
 					updateViews.setViewVisibility (R.id.buttonWidgetRight, 4);
